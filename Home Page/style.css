@@ -1,0 +1,134 @@
+.header-icon
+{
+    display: block;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.header-icon h1
+{
+    padding-top: 0px;
+}
+
+.header-options-tab
+{
+    display:flex;
+    margin-left: 580px;
+}
+
+.header-options-tab a,h1
+{
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
+
+.text-overlay
+{
+    position: absolute;
+    top: 50%; /* Adjust the top and left values to position the text as desired */
+    left:51%;
+    transform: translate(-50%, -50%); /* Center the text horizontally and vertically */
+    color: black; /* Text color */
+    padding: 10px; /* Padding around the text */
+    font-size: 30px; /* Font size */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /* Font family */
+    text-align: center;
+}
+
+.image-container
+{
+    position: relative;
+    display: inline-block;
+}
+
+.transparent-button {
+    position: absolute;
+    top: 50%; /* Adjust the top and left values to position the button as desired */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button horizontally and vertically */
+    background-color: rgba(0, 0, 0, 0); /* Transparent background color for the button */
+    border: 1px solid #000000;
+    border-radius: 10px; /* Optional border for the button */
+    color: #000000; /* Text color for the button */
+    padding: 10px 20px; /* Padding around the button text */
+    text-decoration: none; /* Remove default link underline */
+    font-size: 16px; /* Font size */
+    font-family: Arial, sans-serif; /* Font family */
+    margin-top: 200px;
+}
+
+.about-us-image-container
+{
+    display: flex;
+}
+
+.about-us-image-container img
+{
+    min-width: 700px;
+    min-height: 400px;
+    max-width: 800px;
+    max-height: 400px;
+    margin:60px 20px;
+    border-radius: 20px;
+}
+
+#about-us-heading
+{
+    padding-top: 40px;
+    padding-left: 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+.about-us-text-info
+{
+    display: block;
+}
+
+#about-us-p-1
+{
+    font-size: 22px;
+    padding-left: 40px;
+}
+
+.contact-us-button
+{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 20px;
+    border-radius: 10px;
+    margin-left: 40px;
+    padding: 8px;
+}
+
+#services-heading
+{
+    padding-top: 20px;
+    padding-left: 30px;
+    text-transform: none;
+    font-size: 35px;
+}
+
+.services-card-group
+{
+    display: block;
+    
+}
+
+.services-cards
+{
+    display: flex;
+}
+
+.our-services-photo
+{
+    width: 450px;
+    height: 400px;
+    padding-left: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+
