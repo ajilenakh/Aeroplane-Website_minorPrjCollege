@@ -2,7 +2,6 @@
 {
     display: block;
     text-align: center;
-    padding-top: 25px;
 }
 
 .header-icon h1
@@ -13,7 +12,9 @@
 .header-options-tab
 {
     display:flex;
-    margin-left: 580px;
+    /*margin-left: 580px;*/
+    margin-left: 38%;
+    text-align: center;
 }
 
 .header-options-tab a,h1
@@ -21,6 +22,12 @@
     text-decoration: none;
     color: #333;
     margin-right: 10px;
+}
+
+.carousel-pic
+{
+    max-width: 100%;
+    width: 100%;
 }
 
 #active-link-navbar
