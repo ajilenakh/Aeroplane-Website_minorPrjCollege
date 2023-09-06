@@ -24,10 +24,14 @@
     margin-right: 10px;
 }
 
+.image-container {
+    width: 100%;
+}
+
 .carousel-pic
 {
-    max-width: 100%;
     width: 100%;
+    height: auto;
 }
 
 #active-link-navbar
