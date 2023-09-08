@@ -6,9 +6,9 @@
     <title>Fly - Home</title>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"><!---Favicon--->
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">-->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!--<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>-->
 </head>
 
 <body>
@@ -25,14 +25,14 @@
           </a>
         </div>
         <div class="flex lg:hidden">
-          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" id="openButton">
             <span class="sr-only">Open main menu</span>
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
         </div>    
-        <div class="hidden lg:flex lg:gap-x-12">
+        <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
           <a href="../Home-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
@@ -43,19 +43,19 @@
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
-      <div class="lg:hidden" role="dialog" aria-modal="true">
+      <div class="lg:hidden" role="dialog" aria-modal="true" id="menuItems">
          <!---Background backdrop, show/hide based on slide-over state. -->
         <div class="fixed inset-0 z-50"></div>
         <div class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div class="flex items-center justify-between">
-            <!button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
               <span class="sr-only">Close menu</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div class="mt-6 flow-root">
+          <div class="mt-6 flow-root" >
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
                 <a href="../Home-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
@@ -142,7 +142,7 @@
 
 
     <!-----Quote--->
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-white dark:bg-white-900">
       <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
           <figure class="max-w-screen-md mx-auto">
               <svg class="h-12 mx-auto mb-3 text-gray-400 dark:text-gray-600" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -185,19 +185,15 @@
 </footer>
 
 <script>
-  const showNav = document.querySelector(".show-nav");
-const closeNav = document.querySelector(".close-nav");
-const nav = document.querySelector(".nav");
+   document.getElementById('toggleButtonClose').addEventListener('click', function() {
+            document.getElementById('menuItems').classList.toggle('hidden');
+        });
 
-closeNav.addEventListener("click", () => {
-  nav.classList.remove("right-0");
-  nav.classList.add("right-[-50%]");
-});
-
-showNav.addEventListener("click", () => {
-  nav.classList.remove("right-[-50%]");
-  nav.classList.add("right-0");
-});
+  document.getElementById('openButton').addEventListener('click', function(){
+    document.getElementById('menuItems').classList.toggle('hidden');
+  }
+  );
 </script>
+
 </body>
 </html>
