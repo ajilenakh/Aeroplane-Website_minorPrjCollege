@@ -1,0 +1,15 @@
+{
+  "name": "aeroplane-website",
+  "version": "1.0.0",
+  "description": "A full stack aeroplane website with database integration",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
