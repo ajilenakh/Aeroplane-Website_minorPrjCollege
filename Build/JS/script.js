@@ -26,3 +26,16 @@ function changeTab(event, index) {
             tabButtons[index].classList.add('bg-white');
             tabPanels[index].classList.remove('hidden');
         }
+    
+
+document.addEventListener('DOMContentLoaded', function() {
+    var registerButton = document.getElementById('registerButton');
+    registerButton.addEventListener('click', function() {
+        window.location.href = "../Register-Page/index.html";});
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var loginButton = document.getElementById('loginButton');
+    loginButton.addEventListener('click', function() {
+        window.location.href = "../Login-Page/index.html";});
+});
