@@ -14,4 +14,10 @@ body{
     background-size: cover;
 }
 
+.bg-flight-booking-image
+{
+    background-image: url('../images/booking.jpg');
+    background-size: cover;
+}
+
 
