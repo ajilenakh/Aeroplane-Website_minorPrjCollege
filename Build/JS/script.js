@@ -26,8 +26,9 @@ function changeTab(event, index) {
             tabButtons[index].classList.add('bg-white');
             tabPanels[index].classList.remove('hidden');
         }
+        
     
-
+// switch between login and signup
 document.addEventListener('DOMContentLoaded', function() {
     var registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', function() {
@@ -39,3 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
     loginButton.addEventListener('click', function() {
         window.location.href = "../Login-Page/index.html";});
 });
+
+
+// passwordToggle
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const togglePassword = document.getElementById('togglePassword');
+  
+    togglePassword.addEventListener('click', function() {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        confirmPasswordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+        confirmPasswordInput.type = 'password';
+      }
+    });
+  });
+  
