@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fly - Contact us</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"><!---Favicon--->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"><!---Favicon--->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -17,7 +17,7 @@
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
           <a href="../Home-Page/index.html" class="flex items-center">
-            <img class="h-8 w-auto" src="images/navbar-photo.png" alt="company-logo">
+            <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
         </div>
@@ -122,12 +122,12 @@
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="./index.html" class="flex items-center mb-4 sm:mb-0">
-                    <img src="./images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
+                    <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-white-400">
                     <li>
-                        <a href="#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
+                        <a href="../Home-Page/index.html#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
                     </li>
                     <li>
                         <a href="../Contact-Page/index.html" class="hover:underline">Contact</a>
@@ -139,15 +139,6 @@
         </div>
       </footer>
 
-      <script>
-        document.getElementById('toggleButtonClose').addEventListener('click', function() {
-                 document.getElementById('menuItems').classList.toggle('hidden');
-             });
-     
-       document.getElementById('openButton').addEventListener('click', function(){
-         document.getElementById('menuItems').classList.toggle('hidden');
-       }
-       );
-     </script>
+      <script src="../JS/script.js"></script>
 </body>
 </html>
