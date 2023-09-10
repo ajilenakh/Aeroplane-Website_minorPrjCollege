@@ -58,9 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-
 const passwordInput = document.getElementById('passwordInput');
 const togglePasswordVisibility = document.getElementById('togglePasswordVisibility');
+togglePasswordVisibility.style.cursor = 'pointer';
   
 togglePasswordVisibility.addEventListener('click', function () {
   if (passwordInput.type === 'password') {
