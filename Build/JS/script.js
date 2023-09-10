@@ -69,5 +69,4 @@ togglePasswordVisibility.addEventListener('click', function () {
     passwordInput.type = 'password';
   }
 });
-  
-  
+
