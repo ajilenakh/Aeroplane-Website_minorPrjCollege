@@ -1,11 +1,16 @@
+
+//Opening button for hamburger menu
 document.getElementById('toggleButtonClose').addEventListener('click', function() {
     document.getElementById('menuItems').classList.toggle('hidden');
 });
 
+//Closing button for hamburger menu
 document.getElementById('openButton').addEventListener('click', function(){
 document.getElementById('menuItems').classList.toggle('hidden');
 }
 );
+
+
 function changeTab(event, index) {
             var tabButtons = document.getElementById('tab-buttons').children;
             var tabPanels = document.getElementById('tab-panels').children;
