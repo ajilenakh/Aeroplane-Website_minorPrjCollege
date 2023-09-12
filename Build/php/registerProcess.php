@@ -31,8 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt) {
                 mysqli_stmt_bind_param($stmt, "issss", $UserId, $username, $email, $hashed_password, $salt);
                 mysqli_stmt_execute($stmt);
-                echo "Registration successful!";
                 mysqli_stmt_close($stmt);
+
+                header("Location: homePage.php");
             } else {
                 echo "Error: " . mysqli_error($con);
             }

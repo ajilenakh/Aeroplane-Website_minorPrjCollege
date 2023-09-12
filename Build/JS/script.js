@@ -82,3 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 });
+
+// Confirm Password
+function validateForm() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var passwordError = document.getElementById("passwordError");
+
+    if (password !== confirmPassword) {
+        passwordError.innerText = "Passwords do not match!";
+        return false;
+    }
+
+    passwordError.innerText = "";
+    return true;
+}
