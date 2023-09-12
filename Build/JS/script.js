@@ -101,6 +101,38 @@ function validateForm() {
         return false;
     }
 
-    passwordError.innerText = "";
-    return true;
+    var formData = new FormData(document.querySelector("form"));
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Registration was successful, you can optionally redirect the user here
+                    alert(response.message); // Display a success message
+                } else {
+                    passwordError.innerText = response.message; // Display registration error
+                }
+            } else {
+                alert("Error: Unable to register. Please try again later."); // Handle server errors
+            }
+        }
+    };
+
+    // Instead of submitting the form directly, send an AJAX request
+    xhr.open("POST", "registerProcess.php", true);
+    xhr.send(formData);
+
+    // Prevent the form from submitting
+    return false;
 }
+
+document.getElementById("username").addEventListener("input", function() {
+    document.getElementById("usernameAvailability").innerText = ""; // Clear username availability message
+});
+
+document.getElementById("email").addEventListener("input", function() {
+    document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
+});
+
