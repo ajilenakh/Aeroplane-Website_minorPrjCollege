@@ -4,16 +4,16 @@ session_start();
 include("connection.php");
 include("functions.php");
 
-$email = $_POST["email"];
+$username = $_POST["username"];
 $password = $_POST["password"];
 
-// Retrieve the stored salt and passwordhash for the given email from your database
-$query = "SELECT salt, passwordhash FROM users WHERE email = ?";
+// Retrieve the stored salt and passwordhash for the given username from your database
+$query = "SELECT salt, passwordhash FROM users WHERE username = ?";
 $stmt = mysqli_prepare($con, $query);
 
 if ($stmt) {
     // Bind parameters with references
-    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
 
