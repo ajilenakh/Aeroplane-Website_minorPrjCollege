@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
             $salt = bin2hex(random_bytes(32));
             $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
 
-            // Generate a random User ID (adjust the range as needed)
+            // Generate a random User ID
             $UserId = rand(100000, 999999);
 
             // Inserting data
