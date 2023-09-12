@@ -1,37 +1,3 @@
-<?php
-session_start();
-
-    include("connection.php");
-    include("functions.php");
-
-    //$user_data = check_login($con);
-
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $username = $_POST["username"];
-      $email = $_POST["email"];
-      $password = $_POST["password"];
-      
-      if (!empty($username) && !empty($password) && !is_numeric($username)) {
-          // Save to database using prepared statement
-          $UserId = random_num(20);
-          $query = "INSERT INTO users (UserId, username, email, password) VALUES (?, ?, ?, ?)";
-          $stmt = $con->prepare($query);
-          $stmt->bind_param("ssss", $UserId, $Username, $Email, $Password);
-          if ($stmt->execute()) {
-              header("Location: homePage.php");
-              die();
-          } else {
-              echo "Error: " . $stmt->error;
-          }
-          $stmt->close();
-      } else {
-          echo "Please enter some valid information!";
-      }
-  }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +85,7 @@ session_start();
           <h2 class="font-bold text-2xl text-[#002D74]">SignUp</h2>
           <p class="text-xs mt-4 text-[#002D74]">If you don't have an account yet, sign up.</p>
     
-          <form action="" class="flex flex-col gap-4">
+          <form action="registerProcess.php" method="POST" class="flex flex-col gap-4">
             <input class="p-2 mt-8 rounded-xl border" type="username" name="username" placeholder="Username">
             <input class="p-2 rounded-xl border" type="email" name="email" placeholder="Email">
             <div class="relative">
