@@ -1,3 +1,9 @@
+<?php
+
+include("Build/php/signup.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

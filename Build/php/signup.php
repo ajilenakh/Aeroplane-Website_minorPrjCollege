@@ -34,6 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
                 mysqli_stmt_execute($stmt);
                 echo "Registration successful!";
                 mysqli_stmt_close($stmt);
+
+                header("Location: Build\Home-Page\index.php");
+                
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
