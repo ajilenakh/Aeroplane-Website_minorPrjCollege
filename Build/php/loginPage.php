@@ -96,7 +96,7 @@ session_start();
           <h2 class="font-bold text-2xl text-[#002D74]">Login</h2>
           <p class="text-xs mt-4 text-[#002D74]">If you are already a member, easily log in</p>
     
-          <form action="" method="POST" class="flex flex-col gap-4">
+          <form action="loginProcess.php" method="POST" class="flex flex-col gap-4">
             <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
             <div class="relative">
               <input class="p-2 rounded-xl border w-full" type="password" name="password" id="passwordInput" placeholder="Password">

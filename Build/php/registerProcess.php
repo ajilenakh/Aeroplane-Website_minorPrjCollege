@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $UserId = random_num(20);
 
             // insert user data
-            $query = "INSERT INTO users (UserId, username, email, passwordhash, salt) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO users (User_Id, username, email, passwordhash, salt) VALUES (?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($con, $query);
 
             if ($stmt) {
