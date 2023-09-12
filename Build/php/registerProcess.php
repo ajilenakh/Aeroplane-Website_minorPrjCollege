@@ -6,27 +6,41 @@ include("functions.php");
 
 //$user_data = check_login($con);
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = $_POST["username"];
-  $email = $_POST["email"];
-  $password = $_POST["password"];
-  
-  if (!empty($username) && !empty($password) && !is_numeric($username)) {
-      // Save to database using prepared statement
-      $UserId = random_num(20);
-      $query = "INSERT INTO users (UserId, username, email, password) VALUES (?, ?, ?, ?)";
-      $stmt = $con->prepare($query);
-      $stmt->bind_param("ssss", $UserId, $username, $email, $password);
-      if ($stmt->execute()) {
-          header("Location: homePage.php");
-          die();
-      } else {
-          echo "Error: " . $stmt->error;
-      }
-      $stmt->close();
-  } else {
-      echo "Please enter some valid information!";
-  }
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Check if the username is not a number
+    if (!preg_match('/^\d+$/', $username)) {
+        // Check if both the username and password fields are filled
+        if (!empty($username) && !empty($password)) {
+            // Generate a random salt
+            $salt = bin2hex(random_bytes(32));
+
+            // Hash the password with the salt
+            $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
+
+            // Generate a random User ID
+            $UserId = random_num(20);
+
+            // insert user data
+            $query = "INSERT INTO users (UserId, username, email, passwordhash, salt) VALUES (?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($con, $query);
+
+            if ($stmt) {
+                mysqli_stmt_bind_param($stmt, "issss", $UserId, $username, $email, $hashed_password, $salt);
+                mysqli_stmt_execute($stmt);
+                echo "Registration successful!";
+                mysqli_stmt_close($stmt);
+            } else {
+                echo "Error: " . mysqli_error($con);
+            }
+        } else {
+            echo "Please fill in both the username and password fields.";
+        }
+    } else {
+        echo "Username cannot be a number.";
+    }
 }
 ?>
