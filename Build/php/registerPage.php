@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     $password = $_POST["password"];
 
     // Check if the username is not a number
-    if (!preg_match('/^\d+$/', $Username)) {
+    if (!preg_match('//^\d+$/', $Username)) {
         // Check if both the username and password fields are filled
         if (!empty($Username) && !empty($password)) {
 
