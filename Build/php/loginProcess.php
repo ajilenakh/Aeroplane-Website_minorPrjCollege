@@ -4,20 +4,20 @@ session_start();
 include("connection.php");
 include("functions.php");
 
-$email = $_POST["email"];
+$username = $_POST["username"];
 $password = $_POST["password"];
 
-// Retrieve the stored salt and passwordhash for the given email from your database
-$query = "SELECT salt, passwordhash FROM users WHERE email = ?";
+// Retrieve the stored salt and passwordhash for the given username from your database
+$query = "SELECT salt, passwordhash FROM users WHERE username = ?";
 $stmt = mysqli_prepare($con, $query);
 
 if ($stmt) {
     // Bind parameters with references
-    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
 
-    // Check if a user with the given email exists
+    // Check if a user with the given username exists
     if (mysqli_stmt_num_rows($stmt) == 1) {
         // Bind the result variables
         mysqli_stmt_bind_result($stmt, $salt, $HashedPassword);
@@ -28,15 +28,15 @@ if ($stmt) {
         // Verify the password
         if (password_verify($password . $salt, $HashedPassword)) {
             // Passwords match, grant access
-            $_SESSION["email"] = $email; // Store user's email in the session
+            $_SESSION["username"] = $username; // Store user's username in the session
             header("Location: homePage.php");
         } else {
             // Invalid credentials
             echo "Login failed. Please check your credentials.";
         }
     } else {
-        // No user with the provided email exists
-        echo "No user found with that email.";
+        // No user with the provided username exists
+        echo "No user found with that username.";
     }
 
     mysqli_stmt_close($stmt);
