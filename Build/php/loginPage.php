@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+    include("connection.php");
+    include("functions.php");
+    
+    //$user_data = check_login($con);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,8 +95,8 @@
         <div class="md:w-1/2 px-8 md:px-16">
           <h2 class="font-bold text-2xl text-[#002D74]">Login</h2>
           <p class="text-xs mt-4 text-[#002D74]">If you are already a member, easily log in</p>
-    
-          <form action="" class="flex flex-col gap-4">
+          
+          <form action="loginProcess.php"  method="post" class="flex flex-col gap-4">
             <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
             <div class="relative">
               <input class="p-2 rounded-xl border w-full" type="password" name="password" id="passwordInput" placeholder="Password">

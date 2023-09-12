@@ -1,21 +1,37 @@
 <?php
 include ("connection.php");
+include ("functions.php");
 
+$conn = new mysqli("localhost", "root", "", "aeroplane_website");
 // Sanitize user input
-$username = $_POST["username"];
-$password = $_POST["password"];
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$password = mysqli_real_escape_string($conn, $_POST['password']);
 
-// Retrieve the stored salt and hashed_password for the given username from your database
-// ... (database retrieval code)
 
-// Verify the password
-if (password_verify($password . $salt_from_database, $hashed_password_from_database)) {
-    // Passwords match, grant access
-    echo "Login successful!";
-} else {
-    // Invalid credentials
-    echo "Login failed. Please check your credentials.";
+$sql = "SELECT * FROM users WHERE Email='$email'";
+$result = $conn->query($sql);
+
+// Before the password verification, add:
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+    
+if($user)
+{
+    if(password_verify($password, $user["Password"]))
+    {
+        session_start();
+        $_SESSION["user"] = "yes";
+        header("Location: ../php/homePage.php");
+        die();
+    }else{
+        echo "Password does not match";
+    }
+
+}else{
+    echo "Email does not match";
 }
 
 $conn->close();
 ?>
+
+
+
