@@ -7,45 +7,23 @@ session_start();
     //$user_data = check_login($con);
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
-    $Username = $_POST["username"];
-    $Email = $_POST["email"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Check if the username is not a number
-    if (!preg_match('/^\d+$/', $Username)) {
-        // Check if both the username and password fields are filled
-        if (!empty($Username) && !empty($password)) {
+  if (!empty($UserName) && !empty($password) && !is_numeric($username)) {
+    //save to database
+    $UserId = random_num(20);
+    $query = "insert into users (UserId, username, email, password) values ('$UserId', '$Username', '$Email', '$Password')";
+    
+    mysqli_query($con ,$query);
 
-            // Encrypting password
-            $salt = bin2hex(random_bytes(32));
-            $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
-
-            // Generate a random User ID
-            $UserId = random_num(20);
-
-            // Inserting data
-            $query = "INSERT INTO users (UserId, Username, Email, PasswordHash, Salt) VALUES (?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $query);
-
-            if ($stmt) {
-                // Bind parameters with references
-                mysqli_stmt_bind_param($stmt, "issss", $UserId, $Username, $Email, $hashed_password, $salt);
-                mysqli_stmt_execute($stmt);
-                echo "Registration successful!";
-                mysqli_stmt_close($stmt);
-
-                header("Location: Build\Home-Page\index.php");
-                
-            } else {
-                echo "Error: " . mysqli_error($conn);
-            }
-        } else {
-            echo "Please fill in both the username and password fields.";
-        }
-    } else {
-        echo "Username cannot be a number.";
-    }
+    header("Location: homePage.php");
+    die;
+  }else {
+    echo "Please enter some valid information!";
+  }  
 }
 ?>
 
@@ -138,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
           <p class="text-xs mt-4 text-[#002D74]">If you don't have an account yet, sign up.</p>
     
           <form action="" class="flex flex-col gap-4">
-            <input class="p-2 mt-8 rounded-xl border" type="userName" name="UserName" placeholder="Username">
+            <input class="p-2 mt-8 rounded-xl border" type="username" name="username" placeholder="Username">
             <input class="p-2 rounded-xl border" type="email" name="email" placeholder="Email">
             <div class="relative">
               <input class="p-2 mt-4 rounded-xl border w-full" type="password" name="password" id="password" placeholder="Password">
