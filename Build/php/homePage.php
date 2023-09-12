@@ -20,7 +20,7 @@
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-          <a href="../Home-Page/index.html" class="flex items-center">
+          <a href="../php/homePage.php" class="flex items-center">
             <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
@@ -34,13 +34,13 @@
           </button>
         </div>    
         <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
-          <a href="../Home-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../Booking-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="../Status-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="../Contact-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
+          <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
+          <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="../Login-Page/index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
+          <a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -59,13 +59,13 @@
           <div class="mt-6 flow-root" >
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../Home-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../Booking-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
-                <a href="../Status-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
-                <a href="../Contact-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
+                <a href="../php/homePage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
+                <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
               <div class="py-6">
-                <a href="../Login-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
+                <a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Fly high with convenient ticket booking</h1>
             <p class="mt-6 text-lg leading-8 text-gray-600">Experience hassle-free airplane ticket booking in Mumbai. Choose from a range of options and travel with ease.</p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
-              <a href="../Booking-Page/index.html#booking-form" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</a>
+              <a href="../php/bookingPage.php#booking-form" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</a>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">About us</h1>
       <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fly is a leading airplane ticket booking platform based in Mumbai, Maharashtra, India. Our mission is to make air travel accessible and affordable for everyone. With a user-friendly interface and a vast selection of airlines and routes, we provide a seamless booking experience for our customers.</p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-        <a href="../Contact-Page/index.html" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+        <a href="../php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
           Contact us
       </a>  
     </div>
@@ -163,11 +163,15 @@
     </section>
 
     <!-----Footer-->
-    
-<footer class="bg-white rounded-lg m-4">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+    </div>
+        <footer class="bg-white rounded-lg m-4">
   <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
       <div class="sm:flex sm:items-center sm:justify-between">
-          <a href="../Home-Page/index.html" class="flex items-center mb-4 sm:mb-0">
+          <a href="../php/homePage.php" class="flex items-center mb-4 sm:mb-0">
               <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
               <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
           </a>
@@ -176,12 +180,12 @@
                   <a href="#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
               </li>
               <li>
-                  <a href="../Contact-Page/index.html" class="hover:underline">Contact</a>
+                  <a href="../php/contactPage.php" class="hover:underline">Contact</a>
               </li>
           </ul>
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../Home-Page/index.html" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
   </div>
 </footer>
 

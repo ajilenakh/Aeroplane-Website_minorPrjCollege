@@ -37,13 +37,13 @@ function changeTab(event, index) {
 document.addEventListener('DOMContentLoaded', function() {
     var registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', function() {
-        window.location.href = "../Register-Page/index.php";});
+        window.location.href = "../php/registerPage.php";});
 });
 
 document.addEventListener('DOMContentLoaded', function() {
     var loginButton = document.getElementById('loginButton');
     loginButton.addEventListener('click', function() {
-        window.location.href = "../Login-Page/index.php";});
+        window.location.href = "../php/loginPage.php";});
 });
 
 
