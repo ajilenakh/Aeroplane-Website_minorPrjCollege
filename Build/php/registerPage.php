@@ -1,17 +1,3 @@
-<?php
-session_start();
-
-    include("connection.php");
-    include("functions.php");
-
-    //$user_data = check_login($con);
-    
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,8 +85,8 @@ session_start();
           <h2 class="font-bold text-2xl text-[#002D74]">SignUp</h2>
           <p class="text-xs mt-4 text-[#002D74]">If you don't have an account yet, sign up.</p>
     
-          <form action="" class="flex flex-col gap-4">
-            <input class="p-2 mt-8 rounded-xl border" type="userName" name="UserName" placeholder="Username">
+          <form action="registerProcess.php" method="POST" class="flex flex-col gap-4">
+            <input class="p-2 mt-8 rounded-xl border" type="username" name="username" placeholder="Username">
             <input class="p-2 rounded-xl border" type="email" name="email" placeholder="Email">
             <div class="relative">
               <input class="p-2 mt-4 rounded-xl border w-full" type="password" name="password" id="password" placeholder="Password">
