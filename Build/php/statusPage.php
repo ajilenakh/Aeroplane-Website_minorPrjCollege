@@ -15,7 +15,7 @@
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-          <a href="../Home-Page/index.html" class="flex items-center">
+          <a href="../homePage.php" class="flex items-center">
             <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
@@ -29,13 +29,13 @@
           </button>
         </div>    
         <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
-          <a href="../Home-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../Booking-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="../Status-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="../Contact-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
+          <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
+          <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="../Login-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
+          <a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -54,13 +54,13 @@
           <div class="mt-6 flow-root" >
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../Home-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../Booking-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
-                <a href="../Status-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
-                <a href="../Contact-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
+                <a href="../php/homePage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
+                <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
               <div class="py-6">
-                <a href="../Login-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
+                <a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
               </div>
             </div>
           </div>
@@ -184,21 +184,21 @@
      <footer class="bg-white rounded-lg m-4 mt-auto">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="../Home-Page/index.html" class="flex items-center mb-4 sm:mb-0">
+                <a href="../php/homePage.php" class="flex items-center mb-4 sm:mb-0">
                     <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-white-400">
                     <li>
-                        <a href="../Home-Page/index.html#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
+                        <a href="../homePage.php#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
                     </li>
                     <li>
-                        <a href="../Contact-Page/index.html" class="hover:underline">Contact</a>
+                        <a href="../php/contactPage.php" class="hover:underline">Contact</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../Home-Page/index.html" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../php/homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
         </div>
       </footer>
 
