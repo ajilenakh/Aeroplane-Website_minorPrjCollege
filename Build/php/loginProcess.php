@@ -21,14 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Check if a user with the given email exists
             if (mysqli_stmt_num_rows($stmt) == 1) {
                 // Bind the result variables
-                mysqli_stmt_bind_result($stmt, $id, $UserId, $username, $FetchedEmail, $FetchedPasswordHash, $Salt);
+                mysqli_stmt_bind_result($stmt, $id, $UserId, $username, $FetchedEmail, $FetchedPasswordHash, $salt);
                 mysqli_stmt_fetch($stmt);
 
                 // Hash the provided password with the fetched salt
-                $hashed_password = password_hash($password . $Salt, PASSWORD_BCRYPT);
+                //$hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
 
                 // Compare the hashed password with the fetched password hash
-                if (password_verify($hashed_password, $FetchedPasswordHash)) {
+                if (password_verify($password, $FetchedPasswordHash)) {
                     // Passwords match, user is authenticated
                     session_start();
                     $_SESSION["user_id"] = $UserId;
