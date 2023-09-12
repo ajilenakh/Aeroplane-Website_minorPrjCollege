@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if both the username and password fields are filled
         if (!empty($username) && !empty($password)) {
             // Generate a random salt
-            $salt = bin2hex(random_bytes(32));
+           //$salt = bin2hex(random_bytes(32));
 
             // Hash the password with the salt
-            $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Generate a random User ID
             $UserId = random_num(20);
