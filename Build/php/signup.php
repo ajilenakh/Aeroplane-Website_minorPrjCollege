@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
             $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT);
 
             // Generate a random User ID
-            $UserId = rand(100000, 999999);
+            $UserId = random_num(20);
 
             // Inserting data
             $query = "INSERT INTO users (UserId, Username, Email, PasswordHash, Salt) VALUES (?, ?, ?, ?, ?)";
