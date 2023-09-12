@@ -1,35 +1,20 @@
 <?php
-session_start();
-
-// Establish a database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "aeroplane_website";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include ("connection.php");
 
 // Sanitize user input
-$username = mysqli_real_escape_string($conn, $_POST['username']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
+$username = $_POST["username"];
+$password = $_POST["password"];
 
-$sql = "SELECT * FROM users WHERE username='$username'";
-$result = $conn->query($sql);
+// Retrieve the stored salt and hashed_password for the given username from your database
+// ... (database retrieval code)
 
-if ($result->num_rows == 1) {
-    $row = $result->fetch_assoc();
-    if (password_verify($password, $row['password'])) {
-        $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
-    } else {
-        echo "Invalid password";
-    }
+// Verify the password
+if (password_verify($password . $salt_from_database, $hashed_password_from_database)) {
+    // Passwords match, grant access
+    echo "Login successful!";
 } else {
-    echo "Invalid username";
+    // Invalid credentials
+    echo "Login failed. Please check your credentials.";
 }
 
 $conn->close();
