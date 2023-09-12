@@ -82,3 +82,25 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 });
+
+// Confirm Password
+function validateForm() {
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var passwordError = document.getElementById("passwordError");
+
+    if (password !== confirmPassword) {
+        passwordError.innerText = "Passwords do not match!";
+        return false;
+    }
+
+    if (password.length < 8) {
+        passwordError.innerText = "Password must be at least 8 characters long!";
+        return false;
+    }
+
+    passwordError.innerText = "";
+    return true;
+}
