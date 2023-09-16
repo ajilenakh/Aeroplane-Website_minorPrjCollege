@@ -158,15 +158,16 @@ function validateLoginForm() {
     }
 
     // Send an AJAX request to the server
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
+    var xmr = new XMLHttpRequest();
+    xmr.onreadystatechange = function() {
+        if (xmr.readyState === 4) {
+            //console.log(JSON.parse(xhr.responseText)); // Add this line
+            if (xmr.status === 200) {
+                var response = JSON.parse(xmr.responseText);
                 if (response.success) {
                     // Redirect or show success message
                     alert("Login Successful");
-                    window.location.href = '/php/homePage.php';
+                    window.location.href = 'homePage.php';
                    
                 } else {
                     // Show the error message from the server
@@ -174,7 +175,7 @@ function validateLoginForm() {
                 }
             } else {
                 // Handle server error (if any)
-                console.error('Error:', xhr.status);
+                console.error('Error:', xmr.status);
             }
         }
     };

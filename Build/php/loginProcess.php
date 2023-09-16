@@ -29,10 +29,10 @@ $stmt = mysqli_prepare($con, $query);
                     // Verify the password
                     if (password_verify($password . $salt, $HashedPassword)) {
                         // Passwords match, grant access
-                        $_SESSION["email"] = $email;
+                       // $_SESSION["email"] = $email;
                         $_SESSION["username"] = $username; // Store user's email in the session
                         echo json_encode(array("success" => true, "message" => "Login successful!"));
-                        header("location: homePage.php");
+                        //header("location: homePage.php");
                     } 
                     else {
                         // Invalid credentials
