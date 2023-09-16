@@ -82,7 +82,7 @@ if(isset($_SESSION['username'])){
                     <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
                   </div>
                   <?php
-session_start();
+//session_start();
 
 if(isset($_SESSION['username'])){
     echo '<div class="flex lg:flex-1 lg:justify-end">';
@@ -93,8 +93,8 @@ if(isset($_SESSION['username'])){
     echo '</div>';
 } else {
     // If the user is not logged in, show the login button
-    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-    echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
+    echo '<div class=" py-6">';
+    echo '<a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>';
     echo '</div>';
 }
 

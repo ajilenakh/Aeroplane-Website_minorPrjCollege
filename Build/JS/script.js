@@ -147,16 +147,6 @@ function validateLoginForm() {
 
     errorContainer.innerText = '';
 
-    if (username.trim() === "") {
-        errorContainer.innerText = "Username is required!";
-        return false;
-    }
-
-    if (password.trim() === "") {
-        errorContainer.innerText = "Password is required!";
-        return false;
-    }
-
     // Send an AJAX request to the server
     var xmr = new XMLHttpRequest();
     xmr.onreadystatechange = function() {
@@ -180,9 +170,9 @@ function validateLoginForm() {
         }
     };
 
-    xhr.open("POST", "loginProcess.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+    xmr.open("POST", "loginProcess.php", true);
+    xmr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
 
     // Prevent form from submitting
     return false;
