@@ -110,7 +110,8 @@ function validateForm() {
                 var response = JSON.parse(xhr.responseText);
                 if (response.success) {
                     // Registration was successful, you can optionally redirect the user here
-                    alert(response.message); // Display a success message
+                    window.location.href = 'homePage.php';// Redireecting to homePage
+                    alert("Registraion Successfull");
                 } else {
                     passwordError.innerText = response.message; // Display registration error
                 }
@@ -135,4 +136,56 @@ document.getElementById("username").addEventListener("input", function() {
 document.getElementById("email").addEventListener("input", function() {
     document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
 });
+
+
+//Checking Login info
+
+function validateLoginForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("passwordInput").value;
+    var errorContainer = document.getElementById("errorContainer");
+
+    errorContainer.innerText = '';
+
+    if (username.trim() === "") {
+        errorContainer.innerText = "Username is required!";
+        return false;
+    }
+
+    if (password.trim() === "") {
+        errorContainer.innerText = "Password is required!";
+        return false;
+    }
+
+    // Send an AJAX request to the server
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Redirect or show success message
+                    alert("Login Successful");
+                    window.location.href = '/php/homePage.php';
+                   
+                } else {
+                    // Show the error message from the server
+                    errorContainer.innerText = response.message;
+                }
+            } else {
+                // Handle server error (if any)
+                console.error('Error:', xhr.status);
+            }
+        }
+    };
+
+    xhr.open("POST", "loginProcess.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+
+    // Prevent form from submitting
+    return false;
+}
+
+
 

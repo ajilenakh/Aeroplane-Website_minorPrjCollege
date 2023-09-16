@@ -34,9 +34,24 @@
           <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
           <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
-        </div>
+        <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+    echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
+    echo '</div>';
+}
+
+?>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
       <div role="dialog" aria-modal="true" id="menuItems" class="hidden">
@@ -59,9 +74,24 @@
                 <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
                 <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
-              <div class="py-6">
-                <a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
-              </div>
+              <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+    echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
+    echo '</div>';
+}
+
+?>
             </div>
           </div>
         </div>
