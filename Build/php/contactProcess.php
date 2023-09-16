@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO contact (firstName, lastName, email, phoneNumber, message) VALUES ('$firstName', '$lastName','$email', '$phoneNumber', '$message')";
 
     if (mysqli_query($con, $query)) {
-        echo "Contact details added successfully!";
+        echo json_encode(array("success" => true, "message" => "Contact Details submitted successfully"));
+        //header("location: homePage.php");
     } else {
         echo "Error: " . mysqli_error($con);
     }
