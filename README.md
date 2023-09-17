@@ -1,8 +1,4 @@
-Project Name: Flight Booking Simulator
-
-Description:
-
-The Flight Booking Simulator is an engaging web application that allows users to experience the flight booking process using simulated data. Users can input their travel details, such as departure city, destination, travel dates, and passenger count, to explore a curated list of dummy flight options. Each option provides flight numbers, departure and arrival times, as well as fares for user consideration.
+The Flight Booking website is an engaging web application that allows users to experience the flight booking process using simulated data. Users can input their travel details, such as departure city, destination, travel dates, and passenger count, to explore a curated list of dummy flight options. Each option provides flight numbers, departure and arrival times, as well as fares for user consideration.
 
 Key Features:
 
