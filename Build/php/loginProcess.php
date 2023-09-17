@@ -45,5 +45,3 @@ $stmt = mysqli_prepare($con, $query);
     } else {
         echo "Error: " . mysqli_error($con);
     }
-
-?>
