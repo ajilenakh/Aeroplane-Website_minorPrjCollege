@@ -8,7 +8,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 // Retrieve the stored salt and passwordhash for the given username from your database
-$query = "SELECT salt, passwordhash FROM users WHERE username = ?";
+$query = "SELECT passwordhash FROM users WHERE username = ?";
 $stmt = mysqli_prepare($con, $query);
 
 
@@ -21,13 +21,13 @@ $stmt = mysqli_prepare($con, $query);
                 // Check if a user with the given email exists
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     // Bind the result variables
-                    mysqli_stmt_bind_result($stmt, $salt, $HashedPassword);
+                    mysqli_stmt_bind_result($stmt, $HashedPassword);
             
                     // Fetch the stored hashed password and salt from the database
                     mysqli_stmt_fetch($stmt);
             
                     // Verify the password
-                    if (password_verify($password . $salt, $HashedPassword)) {
+                    if (password_verify($password, $HashedPassword)) {
                         // Passwords match, grant access
                        // $_SESSION["email"] = $email;
                         $_SESSION["username"] = $username; // Store user's email in the session
