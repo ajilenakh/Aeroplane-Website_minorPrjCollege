@@ -16,7 +16,7 @@
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-          <a href="../Home-Page/index.html" class="flex items-center">
+          <a href="../php/homePage.php" class="flex items-center">
             <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
@@ -30,14 +30,29 @@
           </button>
         </div>    
         <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
-          <a href="../Home-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../Booking-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="../Status-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="../Contact-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
+          <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
+          <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="../Login-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
-        </div>
+        <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+    echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
+    echo '</div>';
+}
+
+?>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
       <div role="dialog" aria-modal="true" id="menuItems" class="hidden">
@@ -55,14 +70,29 @@
           <div class="mt-6 flow-root" >
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../Home-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../Booking-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
-                <a href="../Status-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
-                <a href="../Contact-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
+                <a href="../php/homePage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
+                <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
-              <div class="py-6">
-                <a href="../Login-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
-              </div>
+              <?php
+//session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class=" py-6">';
+    echo '<a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>';
+    echo '</div>';
+}
+
+?>
             </div>
           </div>
         </div>
@@ -77,30 +107,30 @@
         <div class="mx-auto max-w-2xl text-center">
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact us</h2>
         </div>
-        <form action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+        <form action="./contactProcess.php" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20" onsubmit="return validateContactForm()">
           <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
               <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">First name</label>
               <div class="mt-2.5">
-                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input type="text" required name="firstName" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
             </div>
             <div>
               <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Last name</label>
               <div class="mt-2.5">
-                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input type="text" required name="lastName" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
             </div>
             <div class="sm:col-span-2">
               <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
               <div class="mt-2.5">
-                <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input type="email" required name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
             </div>
             <div class="sm:col-span-2">
                 <label for="phone-number" class="block text-sm font-semibold leading-6 text-gray-900">Phone number</label>
                 <div class="mt-2.5">
-                  <input type="phone-number" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <input type="phone-number" required name="phoneNumber" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
             <div class="sm:col-span-2">
@@ -118,27 +148,48 @@
 
 
       <!---Footer----->
+     
       <footer class="bg-white rounded-lg m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="../Home-Page/index.html" class="flex items-center mb-4 sm:mb-0">
+                <a href="../php/homePage.php" class="flex items-center mb-4 sm:mb-0">
                     <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-white-400">
                     <li>
-                        <a href="../Home-Page/index.html#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
+                        <a href="../php/homePage.php#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
                     </li>
                     <li>
-                        <a href="../Contact-Page/index.html" class="hover:underline">Contact</a>
+                        <a href="../php/contactPage.php" class="hover:underline">Contact</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../Home-Page/index.html" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
         </div>
       </footer>
 
-      <script src="../JS/script.js"></script>
+<!---Giving alert when submitting the contact form--->
+<script src="../JS/script.js"></script>
+<script>
+  function validateContactForm() {
+    // Add any additional validation logic here if needed
+    return true; // Return true to allow form submission
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the default form submission
+      
+      if (validateContactForm()) {
+        // Form submission is successful
+        alert('Form submitted successfully!'); // Display an alert
+        window.location.href = 'homePage.php';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

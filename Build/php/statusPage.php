@@ -15,7 +15,7 @@
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-          <a href="../Home-Page/index.html" class="flex items-center">
+          <a href="../homePage.php" class="flex items-center">
             <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
@@ -29,14 +29,29 @@
           </button>
         </div>    
         <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
-          <a href="../Home-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../Booking-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="../Status-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="../Contact-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
+          <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
+          <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="../Login-Page/index.html" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>
-        </div>
+        <?php
+session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+    echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
+    echo '</div>';
+}
+
+?>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
       <div role="dialog" aria-modal="true" id="menuItems" class="hidden">
@@ -54,14 +69,29 @@
           <div class="mt-6 flow-root" >
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../Home-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../Booking-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
-                <a href="../Status-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
-                <a href="../Contact-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
+                <a href="../php/homePage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
+                <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
-              <div class="py-6">
-                <a href="../Login-Page/index.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>
-              </div>
+              <?php
+//session_start();
+
+if(isset($_SESSION['username'])){
+    echo '<div class="flex lg:flex-1 lg:justify-end">';
+    echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">'.$_SESSION['username'].'</span>';
+    echo '<form action="../php/logout.php" method="post">';
+    echo '<input type="submit" value="Logout" class="hover:underline">';
+    echo '</form>';
+    echo '</div>';
+} else {
+    // If the user is not logged in, show the login button
+    echo '<div class=" py-6">';
+    echo '<a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>';
+    echo '</div>';
+}
+
+?>
             </div>
           </div>
         </div>
@@ -73,7 +103,7 @@
     <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
       <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
     </div>
-  
+    </div>
 
     <!-----------Booking Form------------>
     <div class="w-2/3 mx-auto py-32 sm:py-48 lg:py-56" id="booking-form">
@@ -177,28 +207,28 @@
     <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
       <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
     </div>
-  </div>
+ 
 
 
      <!-----------------Footer----------------->
      <footer class="bg-white rounded-lg m-4 mt-auto">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="../Home-Page/index.html" class="flex items-center mb-4 sm:mb-0">
+                <a href="../php/homePage.php" class="flex items-center mb-4 sm:mb-0">
                     <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-white-400">
                     <li>
-                        <a href="../Home-Page/index.html#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
+                        <a href="../php/homePage.php#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
                     </li>
                     <li>
-                        <a href="../Contact-Page/index.html" class="hover:underline">Contact</a>
+                        <a href="../php/contactPage.php" class="hover:underline">Contact</a>
                     </li>
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../Home-Page/index.html" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../php/homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
         </div>
       </footer>
 
