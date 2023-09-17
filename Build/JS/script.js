@@ -156,7 +156,7 @@ function validateLoginForm() {
                 var response = JSON.parse(xmr.responseText);
                 if (response.success) {
                     // Redirect or show success message
-                    alert("Login Successful");
+                    //alert("Login Successful");
                     window.location.href = 'homePage.php';
                    
                 } else {
