@@ -149,20 +149,20 @@ if(isset($_SESSION['username'])){
               <div data-tab-content="" class="p-5">
                 <div class="block opacity-100" id="app" role="tabpanel">
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-                    <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+                    <form id="flightOneWaySearchForm" onsubmit="return searchOneWayFlights()" action="./fetchFlights.php" method="post" class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
                       <div class="p-6">
                         <div class="flex-1 max-xs:flex-col gap-4">
                         <div class="mt-4 relative ">
                           <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                             <i class="fa fa-location-arrow"></i>
                           </div>
-                          <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
+                          <input id="oneWayBoarding" name="oneWayBoarding" autocomplete="country-name" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
                         </div>
                         <div class="mt-4 relative">
                           <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                             <i class="fa fa-map-marker"></i>
                           </div>
-                          <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" >
+                          <input id="oneWayDestination" name="oneWayDestination" autocomplete="country-name" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" >
                         </div>
                       </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -170,7 +170,7 @@ if(isset($_SESSION['username'])){
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
+                            <input id="departOneWayDate" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
                           </div>
                        
                         </div>
@@ -179,46 +179,47 @@ if(isset($_SESSION['username'])){
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-user"></i>
                             </div>
-                            <select class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
-                              <option>1 Passenger</option>
-                              <option>2 Passengers</option>
-                              <option>3 Passengers</option>
+                            <select id="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                              <option value="1">1 Passenger</option>
+                              <option value="2">2 Passengers</option>
+                              <option value="3">3 Passengers</option>
                             </select>
                           </div>
                           <div class="flex-1 relative">
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-wheelchair"></i>
                             </div>
-                            <select class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
-                              <option>Economy class</option>
-                              <option>Business Class</option>
-                              <option>First class</option>
+                            <select id="classSelect" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                              <option value="economy-class">Economy class</option>
+                              <option value="bussiness-class">Business Class</option>
+                              <option value="first-class">First class</option>
                             </select>
                           </div>
                         </div>
                       </div>
                       <div>
-                        <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
+                        <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest" type="submit">Search Flights</button>
                       </div>
                     </form>
                   </p>
+                  <div class="oneWayResults"></div>
                 </div>
                 <div class="hidden opacity-0" id="message" role="tabpanel">
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-                    <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+                    <form id="flightRoundTripForm" method="post" action="./fetchFlights.php" onsubmit="return searchRoundTripFlights()" class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
                       <div class="p-6">
                         <div class="flex-1 max-xs:flex-col gap-4">
                         <div class="mt-4 relative ">
                           <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                             <i class="fa fa-location-arrow"></i>
                           </div>
-                          <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
+                          <input id="roundTripBoarding" name="roundTripBoarding" autocomplete="country-name" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
                         </div>
                         <div class="mt-4 relative">
                           <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                             <i class="fa fa-map-marker"></i>
                           </div>
-                          <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text">
+                          <input id="roundTripDestination" name="roundTripDestination" autocomplete="country-name" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text">
                         </div>
                       </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -226,13 +227,13 @@ if(isset($_SESSION['username'])){
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Depart" type="text" onfocus="(this.type='date')">
+                            <input id="departRoundTripDate" name="departRoundTripDate" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Depart" type="text" onfocus="(this.type='date')">
                           </div>
                           <div class="flex-1 relative">
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Return" type="text" onfocus="(this.type='date')">
+                            <input id="arrivalRoundTripDate" name="arrivalRoundTripDate" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Return" type="text" onfocus="(this.type='date')">
                           </div>
                         </div>
                         <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -240,30 +241,31 @@ if(isset($_SESSION['username'])){
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-user"></i>
                             </div>
-                            <select class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
-                              <option>1 Passenger</option>
-                              <option>2 Passengers</option>
-                              <option>3 Passengers</option>
+                            <select id="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                              <option value="1">1 Passenger</option>
+                              <option value="2">2 Passengers</option>
+                              <option value="3">3 Passengers</option>
                             </select>
                           </div>
                           <div class="flex-1 relative">
                             <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                               <i class="fa fa-wheelchair"></i>
                             </div>
-                            <select class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
-                              <option>Economy class</option>
-                              <option>Business Class</option>
-                              <option>First class</option>
+                            <select id="classSelect" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                              <option value="economy-class">Economy class</option>
+                              <option value="bussiness-class">Business Class</option>
+                              <option value="first-class">First class</option>
                             </select>
                           </div>
                         </div>
                       </div>
                       <div>
-                        <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
+                        <button type="submit" class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
                       </div>
                     </form>
                   </p>
                 </div>
+                <div id="results"></div>
               </div>
             </div>
           </div>
