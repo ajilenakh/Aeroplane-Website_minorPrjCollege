@@ -6,7 +6,7 @@
     "destination": "Delhi (DEL)",
     "departureDate": "2023-09-30",
     "passengerCount": 120,
-    "class": "Economy"
+    "class": ["Business", "Economy", "First Class"]
   },
   {
     "flightNumber": "FL002",
@@ -14,8 +14,8 @@
     "origin": "Delhi (DEL)",
     "destination": "Bangalore (BLR)",
     "departureDate": "2023-10-01",
-    "passengerCount": 50,
-    "class": "Business"
+    "passengerCount": 100,
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL003",
@@ -23,8 +23,8 @@
     "origin": "Chennai (MAA)",
     "destination": "Mumbai (BOM)",
     "departureDate": "2023-10-02",
-    "passengerCount": 200,
-    "class": "First Class"
+    "passengerCount": 150,
+    "class": ["Business", "Economy", "First Class"]
   },
   {
     "flightNumber": "FL004",
@@ -32,8 +32,8 @@
     "origin": "Kolkata (CCU)",
     "destination": "Hyderabad (HYD)",
     "departureDate": "2023-10-03",
-    "passengerCount": 75,
-    "class": "Economy"
+    "passengerCount": 80,
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL005",
@@ -41,8 +41,8 @@
     "origin": "Bengaluru (BLR)",
     "destination": "Chennai (MAA)",
     "departureDate": "2023-10-04",
-    "passengerCount": 150,
-    "class": "Business"
+    "passengerCount": 120,
+    "class": ["Business", "Economy", "First Class"]
   },
   {
     "flightNumber": "FL006",
@@ -50,8 +50,8 @@
     "origin": "Hyderabad (HYD)",
     "destination": "Kolkata (CCU)",
     "departureDate": "2023-10-05",
-    "passengerCount": 30,
-    "class": "Economy"
+    "passengerCount": 70,
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL007",
@@ -60,7 +60,7 @@
     "destination": "Bengaluru (BLR)",
     "departureDate": "2023-10-06",
     "passengerCount": 100,
-    "class": "First Class"
+    "class": ["Business", "Economy", "First Class"]
   },
   {
     "flightNumber": "FL008",
@@ -68,8 +68,8 @@
     "origin": "Mumbai (BOM)",
     "destination": "Delhi (DEL)",
     "departureDate": "2023-10-07",
-    "passengerCount": 80,
-    "class": "Economy"
+    "passengerCount": 90,
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL009",
@@ -77,8 +77,8 @@
     "origin": "Delhi (DEL)",
     "destination": "Mumbai (BOM)",
     "departureDate": "2023-10-08",
-    "passengerCount": 180,
-    "class": "Business"
+    "passengerCount": 120,
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL010",
@@ -87,7 +87,7 @@
     "destination": "Mumbai (BOM)",
     "departureDate": "2023-10-09",
     "passengerCount": 45,
-    "class": "First Class"
+    "class": ["Business", "Economy", "First Class"]
   },
   {
     "flightNumber": "FL011",
@@ -96,7 +96,7 @@
     "destination": "Chennai (MAA)",
     "departureDate": "2023-10-10",
     "passengerCount": 120,
-    "class": "Economy"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL012",
@@ -105,7 +105,7 @@
     "destination": "Bengaluru (BLR)",
     "departureDate": "2023-10-11",
     "passengerCount": 60,
-    "class": "Business"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL013",
@@ -114,7 +114,7 @@
     "destination": "Delhi (DEL)",
     "departureDate": "2023-10-12",
     "passengerCount": 150,
-    "class": "First Class"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL014",
@@ -123,7 +123,7 @@
     "destination": "Kolkata (CCU)",
     "departureDate": "2023-10-13",
     "passengerCount": 90,
-    "class": "Economy"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL015",
@@ -132,7 +132,7 @@
     "destination": "Mumbai (BOM)",
     "departureDate": "2023-10-14",
     "passengerCount": 200,
-    "class": "Business"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL016",
@@ -141,7 +141,7 @@
     "destination": "Delhi (DEL)",
     "departureDate": "2023-10-15",
     "passengerCount": 110,
-    "class": "Economy"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL017",
@@ -150,7 +150,7 @@
     "destination": "Bangalore (BLR)",
     "departureDate": "2023-10-16",
     "passengerCount": 55,
-    "class": "Business"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL018",
@@ -159,7 +159,7 @@
     "destination": "Mumbai (BOM)",
     "departureDate": "2023-10-17",
     "passengerCount": 180,
-    "class": "First Class"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL019",
@@ -168,7 +168,7 @@
     "destination": "Hyderabad (HYD)",
     "departureDate": "2023-10-18",
     "passengerCount": 70,
-    "class": "Economy"
+    "class": ["Business", "Economy"]
   },
   {
     "flightNumber": "FL020",
@@ -177,6 +177,6 @@
     "destination": "Chennai (MAA)",
     "departureDate": "2023-10-19",
     "passengerCount": 130,
-    "class": "Business"
+    "class": ["Business", "Economy"]
   }
 ]
