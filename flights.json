@@ -1,166 +1,182 @@
 [
-    {
-      "flightNumber": "FL001",
-      "airline": "Delta Airlines",
-      "origin": "Mumbai (BOM)",
-      "destination": "Delhi (DEL)",
-      "departureDate": "2023-09-30",
-      "departureTime": "08:00 AM",
-      "arrivalDate": "2023-09-30",
-      "arrivalTime": "11:00 AM",
-      "price": 22050
-    },
-    {
-      "flightNumber": "FL002",
-      "airline": "United Airlines",
-      "origin": "Delhi (DEL)",
-      "destination": "Bangalore (BLR)",
-      "departureDate": "2023-10-01",
-      "departureTime": "10:00 AM",
-      "arrivalDate": "2023-10-01",
-      "arrivalTime": "01:00 PM",
-      "price": 20580
-    },
-    {
-      "flightNumber": "FL003",
-      "airline": "American Airlines",
-      "origin": "Chennai (MAA)",
-      "destination": "Mumbai (BOM)",
-      "departureDate": "2023-10-02",
-      "departureTime": "09:30 AM",
-      "arrivalDate": "2023-10-02",
-      "arrivalTime": "12:30 PM",
-      "price": 23520
-    },
-    {
-      "flightNumber": "FL004",
-      "airline": "Southwest Airlines",
-      "origin": "Kolkata (CCU)",
-      "destination": "Hyderabad (HYD)",
-      "departureDate": "2023-10-03",
-      "departureTime": "11:00 AM",
-      "arrivalDate": "2023-10-03",
-      "arrivalTime": "01:30 PM",
-      "price": 14700
-    },
-    {
-      "flightNumber": "FL005",
-      "airline": "JetBlue Airways",
-      "origin": "Bengaluru (BLR)",
-      "destination": "Chennai (MAA)",
-      "departureDate": "2023-10-04",
-      "departureTime": "10:30 AM",
-      "arrivalDate": "2023-10-04",
-      "arrivalTime": "02:00 PM",
-      "price": 19010
-    },
-    {
-      "flightNumber": "FL006",
-      "airline": "Alaska Airlines",
-      "origin": "Hyderabad (HYD)",
-      "destination": "Kolkata (CCU)",
-      "departureDate": "2023-10-05",
-      "departureTime": "09:00 AM",
-      "arrivalDate": "2023-10-05",
-      "arrivalTime": "12:00 PM",
-      "price": 22860
-    },
-    {
-      "flightNumber": "FL007",
-      "airline": "Spirit Airlines",
-      "origin": "Chennai (MAA)",
-      "destination": "Bengaluru (BLR)",
-      "departureDate": "2023-10-06",
-      "departureTime": "08:30 AM",
-      "arrivalDate": "2023-10-06",
-      "arrivalTime": "11:30 AM",
-      "price": 16170
-    },
-    {
-      "flightNumber": "FL008",
-      "airline": "Frontier Airlines",
-      "origin": "Mumbai (BOM)",
-      "destination": "Delhi (DEL)",
-      "departureDate": "2023-10-07",
-      "departureTime": "12:00 PM",
-      "arrivalDate": "2023-10-07",
-      "arrivalTime": "03:00 PM",
-      "price": 21315
-    },
-    {
-      "flightNumber": "FL009",
-      "airline": "Allegiant Air",
-      "origin": "Delhi (DEL)",
-      "destination": "Mumbai (BOM)",
-      "departureDate": "2023-10-08",
-      "departureTime": "10:00 AM",
-      "arrivalDate": "2023-10-08",
-      "arrivalTime": "01:00 PM",
-      "price": 17640
-    },
-    {
-      "flightNumber": "FL010",
-      "airline": "Hawaiian Airlines",
-      "origin": "Chennai (MAA)",
-      "destination": "Mumbai (BOM)",
-      "departureDate": "2023-10-09",
-      "departureTime": "09:30 AM",
-      "arrivalDate": "2023-10-09",
-      "arrivalTime": "12:30 PM",
-      "price": 25675
-    },
-    {
-      "flightNumber": "FL011",
-      "airline": "Virgin America",
-      "origin": "Kolkata (CCU)",
-      "destination": "Chennai (MAA)",
-      "departureDate": "2023-10-10",
-      "departureTime": "11:30 AM",
-      "arrivalDate": "2023-10-10",
-      "arrivalTime": "02:30 PM",
-      "price": 19815
-    },
-    {
-      "flightNumber": "FL012",
-      "airline": "Frontier Airlines",
-      "origin": "Delhi (DEL)",
-      "destination": "Bengaluru (BLR)",
-      "departureDate": "2023-10-11",
-      "departureTime": "12:00 PM",
-      "arrivalDate": "2023-10-11",
-      "arrivalTime": "03:00 PM",
-      "price": 21315
-    },
-    {
-      "flightNumber": "FL013",
-      "airline": "JetBlue Airways",
-      "origin": "Mumbai (BOM)",
-      "destination": "Delhi (DEL)",
-      "departureDate": "2023-10-12",
-      "departureTime": "10:30 AM",
-      "arrivalDate": "2023-10-12",
-      "arrivalTime": "01:30 PM",
-      "price": 20580
-    },
-    {
-      "flightNumber": "FL014",
-      "airline": "American Airlines",
-      "origin": "Chennai (MAA)",
-      "destination": "Kolkata (CCU)",
-      "departureDate": "2023-10-13",
-      "departureTime": "09:00 AM",
-      "arrivalDate": "2023-10-13",
-      "arrivalTime": "12:00 PM",
-      "price": 23520
-    },
-    {
-      "flightNumber": "FL015",
-      "airline": "Delta Airlines",
-      "origin": "Bengaluru (BLR)",
-      "destination": "Mumbai (BOM)",
-      "departureDate": "2023-10-14",
-      "departureTime": "08:30 AM",
-      "arrivalDate": "2023-10-14",
-      "arrivalTime": "11:30 AM",
-    } 
-];
+  {
+    "flightNumber": "FL001",
+    "airline": "Delta Airlines",
+    "origin": "Mumbai (BOM)",
+    "destination": "Delhi (DEL)",
+    "departureDate": "2023-09-30",
+    "passengerCount": 120,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL002",
+    "airline": "United Airlines",
+    "origin": "Delhi (DEL)",
+    "destination": "Bangalore (BLR)",
+    "departureDate": "2023-10-01",
+    "passengerCount": 50,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL003",
+    "airline": "American Airlines",
+    "origin": "Chennai (MAA)",
+    "destination": "Mumbai (BOM)",
+    "departureDate": "2023-10-02",
+    "passengerCount": 200,
+    "class": "First Class"
+  },
+  {
+    "flightNumber": "FL004",
+    "airline": "Southwest Airlines",
+    "origin": "Kolkata (CCU)",
+    "destination": "Hyderabad (HYD)",
+    "departureDate": "2023-10-03",
+    "passengerCount": 75,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL005",
+    "airline": "JetBlue Airways",
+    "origin": "Bengaluru (BLR)",
+    "destination": "Chennai (MAA)",
+    "departureDate": "2023-10-04",
+    "passengerCount": 150,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL006",
+    "airline": "Alaska Airlines",
+    "origin": "Hyderabad (HYD)",
+    "destination": "Kolkata (CCU)",
+    "departureDate": "2023-10-05",
+    "passengerCount": 30,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL007",
+    "airline": "Spirit Airlines",
+    "origin": "Chennai (MAA)",
+    "destination": "Bengaluru (BLR)",
+    "departureDate": "2023-10-06",
+    "passengerCount": 100,
+    "class": "First Class"
+  },
+  {
+    "flightNumber": "FL008",
+    "airline": "Frontier Airlines",
+    "origin": "Mumbai (BOM)",
+    "destination": "Delhi (DEL)",
+    "departureDate": "2023-10-07",
+    "passengerCount": 80,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL009",
+    "airline": "Allegiant Air",
+    "origin": "Delhi (DEL)",
+    "destination": "Mumbai (BOM)",
+    "departureDate": "2023-10-08",
+    "passengerCount": 180,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL010",
+    "airline": "Hawaiian Airlines",
+    "origin": "Chennai (MAA)",
+    "destination": "Mumbai (BOM)",
+    "departureDate": "2023-10-09",
+    "passengerCount": 45,
+    "class": "First Class"
+  },
+  {
+    "flightNumber": "FL011",
+    "airline": "Virgin America",
+    "origin": "Kolkata (CCU)",
+    "destination": "Chennai (MAA)",
+    "departureDate": "2023-10-10",
+    "passengerCount": 120,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL012",
+    "airline": "Frontier Airlines",
+    "origin": "Delhi (DEL)",
+    "destination": "Bengaluru (BLR)",
+    "departureDate": "2023-10-11",
+    "passengerCount": 60,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL013",
+    "airline": "JetBlue Airways",
+    "origin": "Mumbai (BOM)",
+    "destination": "Delhi (DEL)",
+    "departureDate": "2023-10-12",
+    "passengerCount": 150,
+    "class": "First Class"
+  },
+  {
+    "flightNumber": "FL014",
+    "airline": "American Airlines",
+    "origin": "Chennai (MAA)",
+    "destination": "Kolkata (CCU)",
+    "departureDate": "2023-10-13",
+    "passengerCount": 90,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL015",
+    "airline": "Delta Airlines",
+    "origin": "Bengaluru (BLR)",
+    "destination": "Mumbai (BOM)",
+    "departureDate": "2023-10-14",
+    "passengerCount": 200,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL016",
+    "airline": "Southwest Airlines",
+    "origin": "Mumbai (BOM)",
+    "destination": "Delhi (DEL)",
+    "departureDate": "2023-10-15",
+    "passengerCount": 110,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL017",
+    "airline": "United Airlines",
+    "origin": "Delhi (DEL)",
+    "destination": "Bangalore (BLR)",
+    "departureDate": "2023-10-16",
+    "passengerCount": 55,
+    "class": "Business"
+  },
+  {
+    "flightNumber": "FL018",
+    "airline": "American Airlines",
+    "origin": "Chennai (MAA)",
+    "destination": "Mumbai (BOM)",
+    "departureDate": "2023-10-17",
+    "passengerCount": 180,
+    "class": "First Class"
+  },
+  {
+    "flightNumber": "FL019",
+    "airline": "Spirit Airlines",
+    "origin": "Kolkata (CCU)",
+    "destination": "Hyderabad (HYD)",
+    "departureDate": "2023-10-18",
+    "passengerCount": 70,
+    "class": "Economy"
+  },
+  {
+    "flightNumber": "FL020",
+    "airline": "JetBlue Airways",
+    "origin": "Bengaluru (BLR)",
+    "destination": "Chennai (MAA)",
+    "departureDate": "2023-10-19",
+    "passengerCount": 130,
+    "class": "Business"
+  }
+]
