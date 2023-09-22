@@ -140,14 +140,14 @@ if(isset($_SESSION['username'])){
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-              <form class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+              <form id="searchByFlightNumber" action="./statusFetch.php" method="post" onsubmit="return searchFlightNumber()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
                 <div class="p-6 flex-1">
                   <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-map-marker"></i>
                     </div>
-                    <input class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Flight Number" type="text">
+                    <input id="flightNumber" name="flightNumber" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Flight Number" type="text">
                   </div>
                 </div>
                   <div class="flex-1 max-xs:flex-col gap-4">
@@ -155,27 +155,27 @@ if(isset($_SESSION['username'])){
                       <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
+                      <input id="departDate" name="departDate" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
                     </div>
                  
                   </div>
                 </div>
                 <div class="flex mx-auto">
-                  <button class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
+                  <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
                 </div>
               </form>
             </p>
           </div>
           <div class="hidden opacity-0" id="message" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-              <form class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+              <form id="searchByRoute" action="./statusFetch.php" method="post" onsubmit="return searchFlightRoute()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
                 <div class="p-6 flex-1">
                     <div class="max-xs:flex-col gap-4">
                     <div class="mt-4 relative ">
                       <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                         <i class="fa fa-location-arrow "></i>
                       </div>
-                      <input class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
+                      <input id="boardingFrom" name="boardingFrom" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
                     </div>
                   </div>
                   <div class="max-xs:flex-col gap-4">
@@ -183,7 +183,7 @@ if(isset($_SESSION['username'])){
                       <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                         <i class="fa fa-map-marker"></i>
                       </div>
-                      <input class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text">
+                      <input id="destination" name="destination" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text">
                     </div>
                   </div>
                     <div class="flex-1 max-xs:flex-col gap-4">
@@ -191,12 +191,12 @@ if(isset($_SESSION['username'])){
                         <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
+                        <input id="departDateRoute" name="departDateRoute" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
                       </div>
                     </div>
                   </div>
                   <div class="flex mx-auto">
-                    <button class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
+                    <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
                   </div>
                   </form>
             </p>
