@@ -130,7 +130,7 @@ if(isset($_SESSION['username'])){
             <div class="sm:col-span-2">
                 <label for="phone-number" class="block text-sm font-semibold leading-6 text-gray-900">Phone number</label>
                 <div class="mt-2.5">
-                  <input type="phone-number" required name="phoneNumber" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  <input type="phone-number" placeholder="Optional" required name="phoneNumber" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
             <div class="sm:col-span-2">
@@ -166,7 +166,7 @@ if(isset($_SESSION['username'])){
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../php/homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
         </div>
       </footer>
 

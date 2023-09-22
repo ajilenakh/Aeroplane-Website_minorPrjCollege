@@ -159,7 +159,7 @@ function validateLoginForm() {
         var response = JSON.parse(xmr.responseText);
         if (response.success) {
           // Redirect or show success message
-          alert("Login Successful");
+         //alert("Login Successful");
           window.location.href = "homePage.php";
         } else {
           // Show the error message from the server
@@ -183,71 +183,4 @@ function validateLoginForm() {
 
   // Prevent form from submitting
   return false;
-}
-
-//Fetch Flights
-
-function searchOneWayFlights() {
-  var form = document.getElementById("flightSearchForm");
-  var formData = new FormData(form);
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "fetchFlights.php", true);
-
-  xhr.onload = function () {
-    if (xhr.status >= 200 && xhr.status < 400) {
-      var response = JSON.parse(xhr.responseText);
-      displayResults(response);
-    } else {
-      console.error("Server returned an error");
-    }
-  };
-
-  xhr.onerror = function () {
-    console.error("Connection error");
-  };
-
-  xhr.send(formData);
-}
-
-function displayResults(data) {
-  var resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = ""; // Clear previous results
-
-  for (var i = 0; i < data.length; i++) {
-    var flight = data[i];
-    var flightElement = document.createElement("div");
-    flightElement.innerHTML = `
-            <h2>${flight.airline} - ${flight.flight_number}</h2>
-            <p>Departure: ${flight.departure}</p>
-            <p>Arrival: ${flight.arrival}</p>
-            <p>Departure Time: ${flight.depart_time}</p>
-            <p>Arrival Time: ${flight.arrival_time}</p>
-            <p>Price: $${flight.price}</p>
-            <p>Available Seats: ${flight.available_seats}</p>
-            <p>Class: ${flight.class}</p>
-            <hr>
-        `;
-    resultsDiv.appendChild(flightElement);
-  }
-}
-
-//Status Checking
-
-function searchFlightNumber() {
-  var flightNumber = document.getElementById("flightNumber");
-  var departDate = document.getElementById("departDate");
-
-  const date = new Date();
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  // This arrangement can be altered based on how we want the date's format to appear.
-  let currentDate = `${day}-${month}-${year}`;
-
-  if (departDate < currentDate) {
-    alert("Depart Date can not be in the past");
-  } else {
-  }
 }

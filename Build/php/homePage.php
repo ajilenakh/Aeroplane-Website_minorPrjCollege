@@ -130,7 +130,7 @@
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">About us</h1>
       <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fly is a leading airplane ticket booking platform based in Mumbai, Maharashtra, India. Our mission is to make air travel accessible and affordable for everyone. With a user-friendly interface and a vast selection of airlines and routes, we provide a seamless booking experience for our customers.</p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-        <a href="../php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+        <a href="../php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-[#676E78] rounded-lg border border-[#676E78] hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
           Contact us
         </a>
       </div>
@@ -209,7 +209,7 @@
         </ul>
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../php/homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
     </div>
   </footer>
 
