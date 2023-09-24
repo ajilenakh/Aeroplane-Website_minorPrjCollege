@@ -22,7 +22,7 @@ CREATE TABLE `users` (
 
 --Flights table with flights data--
 CREATE TABLE `flights` (
-  `flight_number` int(10) NOT NULL AUTO_INCREMENT,
+  `flight_num` int(10) NOT NULL AUTO_INCREMENT,
   `flight_id` varchar(11) DEFAULT NULL,
   `origin` varchar(50) DEFAULT NULL,
   `destination` varchar(50) DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `flights` (
   `length` varchar(50) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `seats_available` int(11) DEFAULT NULL,
-  PRIMARY KEY (`flight_number`)
+  PRIMARY KEY (`flight_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `flights` 
