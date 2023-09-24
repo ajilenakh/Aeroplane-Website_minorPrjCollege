@@ -184,7 +184,7 @@ function one_way_form() {
   var classType = document.getElementById("class_type").value;
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "fetchFlights.php", true);
+  xhr.open("POST", "./fetchFlights.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   var params =
