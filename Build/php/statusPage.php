@@ -70,7 +70,19 @@ $user_data = check_login($con);
                 <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
               <?php
-              show_login();
+              if (isset($_SESSION['username'])) {
+                echo '<div class="lg:flex lg:flex-1 lg:justify-end">';
+                echo '<span class="text-sm font-semibold leading-6 text-gray-900 hover:underline">' . $_SESSION['username'] . '</span>';
+                echo '<form action="../php/logout.php" method="post">';
+                echo '<input type="submit" value="Logout" class="hover:underline mt-5">';
+                echo '</form>';
+                echo '</div>';
+              } else {
+                // If the user is not logged in, show the login button
+                echo '<div class="lg:flex lg:flex-1 lg:justify-end">';
+                echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true"></span></a>';
+                echo '</div>';
+              }
               ?>
             </div>
           </div>
