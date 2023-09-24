@@ -1,5 +1,11 @@
-<?
+<?php
 session_start();
+
+include("connection.php");
+include_once("functions.php");
+
+//$user_data = check_login($con);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +28,7 @@ session_start();
   <div class="bg-white">
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1">
+        <div class="flex items-center lg:flex-1">
           <a href="../php/homePage.php" class="flex items-center">
             <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
@@ -36,29 +42,14 @@ session_start();
             </svg>
           </button>
         </div>
-        <div class="hidden lg:flex lg:gap-x-12 " id="openMenuItems">
+        <div class="hidden lg:flex lg:flex-1 justify-center lg:gap-x-12" id="openMenuItems">
           <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
           <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
           <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
           <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
         <?php
-        session_start();
-
-        if (isset($_SESSION['username'])) {
-          echo '<div class="flex lg:flex-1 lg:justify-end">';
-          echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">' . $_SESSION['username'] . '</span>';
-          echo '<form action="../php/logout.php" method="post">';
-          echo '<input type="submit" value="Logout" class="hover:underline">';
-          echo '</form>';
-          echo '</div>';
-        } else {
-          // If the user is not logged in, show the login button
-          echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-          echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in <span aria-hidden="true">&rarr;</span></a>';
-          echo '</div>';
-        }
-
+        show_login();
         ?>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -83,22 +74,7 @@ session_start();
                 <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
               <?php
-              //session_start();
-
-              if (isset($_SESSION['username'])) {
-                echo '<div class="flex lg:flex-1 lg:justify-end">';
-                echo '<span class="text-sm font-semibold leading-6 text-gray-900 mx-5">' . $_SESSION['username'] . '</span>';
-                echo '<form action="../php/logout.php" method="post">';
-                echo '<input type="submit" value="Logout" class="hover:underline">';
-                echo '</form>';
-                echo '</div>';
-              } else {
-                // If the user is not logged in, show the login button
-                echo '<div class=" py-6">';
-                echo '<a href="../php/loginPage.php" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Log in</a>';
-                echo '</div>';
-              }
-
+              show_login();
               ?>
             </div>
           </div>
@@ -108,7 +84,7 @@ session_start();
 
 
 
-   <!-----------------------------Hero Section------------------------------------->
+    <!-----------------------------Hero Section------------------------------------->
     <div class=" flex relative isolate px-6 pt-14 lg:px-8">
       <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
