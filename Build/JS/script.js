@@ -1,14 +1,13 @@
-// Opening button for hamburger menu
+// Toggle hamburger menu
 document
   .getElementById("toggleButtonClose")
-  .addEventListener("click", function () {
-    document.getElementById("menuItems").classList.toggle("hidden");
-  });
+  .addEventListener("click", toggleMenu);
+document.getElementById("openButton").addEventListener("click", toggleMenu);
 
-// Closing button for hamburger menu
-document.getElementById("openButton").addEventListener("click", function () {
+// Function to toggle menu visibility
+function toggleMenu() {
   document.getElementById("menuItems").classList.toggle("hidden");
-});
+}
 
 function changeTab(event, index) {
   var tabButtons = document.getElementById("tab-buttons").children;
@@ -33,59 +32,49 @@ function changeTab(event, index) {
 
 // Switch between login and signup
 document.addEventListener("DOMContentLoaded", function () {
-  var registerButton = document.getElementById("registerButton");
-  if (registerButton) {
-    registerButton.addEventListener("click", function () {
-      window.location.href = "../php/registerPage.php";
-    });
-  }
-
-  var loginButton = document.getElementById("loginButton");
-  if (loginButton) {
-    loginButton.addEventListener("click", function () {
-      window.location.href = "../php/loginPage.php";
-    });
-  }
+  addNavigationListener("registerButton", "../php/registerPage.php");
+  addNavigationListener("loginButton", "../php/loginPage.php");
 });
+
+// Function to add navigation event listener
+function addNavigationListener(buttonId, targetPage) {
+  const button = document.getElementById(buttonId);
+  if (button) {
+    button.addEventListener("click", function () {
+      window.location.href = targetPage;
+    });
+  }
+}
 
 // Password Toggle
 document.addEventListener("DOMContentLoaded", function () {
-  const passwordInput = document.getElementById("password");
-  const confirmPasswordInput = document.getElementById("confirmPassword");
-  const togglePassword = document.getElementById("togglePassword");
+  togglePasswordVisibility("password", "confirmPassword", "togglePassword");
+  togglePasswordVisibility("passwordInput", null, "togglePasswordVisibility");
+});
 
-  if (togglePassword) {
-    togglePassword.addEventListener("click", function () {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        confirmPasswordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-        confirmPasswordInput.type = "password";
+// Function to toggle password visibility
+function togglePasswordVisibility(
+  passwordId,
+  confirmPasswordId,
+  toggleButtonId
+) {
+  const passwordInput = document.getElementById(passwordId);
+  const confirmPasswordInput = confirmPasswordId
+    ? document.getElementById(confirmPasswordId)
+    : null;
+  const toggleButton = document.getElementById(toggleButtonId);
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", function () {
+      passwordInput.type =
+        passwordInput.type === "password" ? "text" : "password";
+      if (confirmPasswordInput) {
+        confirmPasswordInput.type =
+          confirmPasswordInput.type === "password" ? "text" : "password";
       }
     });
   }
-});
-
-// Password Visibility Toggle
-document.addEventListener("DOMContentLoaded", function () {
-  const passwordInput = document.getElementById("passwordInput");
-  const togglePasswordVisibility = document.getElementById(
-    "togglePasswordVisibility"
-  );
-
-  if (togglePasswordVisibility) {
-    togglePasswordVisibility.style.cursor = "pointer";
-
-    togglePasswordVisibility.addEventListener("click", function () {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-      }
-    });
-  }
-});
+}
 
 // Confirm Password
 function validateForm() {
@@ -159,7 +148,7 @@ function validateLoginForm() {
         var response = JSON.parse(xmr.responseText);
         if (response.success) {
           // Redirect or show success message
-         //alert("Login Successful");
+          //alert("Login Successful");
           window.location.href = "homePage.php";
         } else {
           // Show the error message from the server
