@@ -1,31 +1,25 @@
 <?php
+include("connection.php");
 
-$airplaneData = [
-    [
-        'airline' => 'Airline A',
-        'flight_number' => 'AA123',
-        'departure' => 'New York',
-        'arrival' => 'Los Angeles',
-        'depart_time' => '2023-09-20 08:00:00',
-        'arrival_time' => '2023-09-20 11:00:00',
-        'price' => 250.00,
-        'available_seats' => 120,
-        'class' => 'Economy'
-    ],
-    [
-        'airline' => 'Airline B',
-        'flight_number' => 'BB456',
-        'departure' => 'Los Angeles',
-        'arrival' => 'Chicago',
-        'depart_time' => '2023-09-21 12:00:00',
-        'arrival_time' => '2023-09-21 15:00:00',
-        'price' => 350.00,
-        'available_seats' => 80,
-        'class' => 'Business'
-    ],
-    // Add more entries as needed...
-];
+$origin = $_POST['origin'];
+$destination = $_POST['destination'];
+$departDate = $_POST['departDate'];
+$passengerCount = $_POST['passengerCount'];
+$classType = $_POST['classType'];
 
-header('Content-Type: application/json');
-echo json_encode($airplaneData);
-?>
+$sql = "SELECT * FROM flights WHERE origin = '$origin' AND destination = '$destination' AND depart_date = '$departDate' AND passenger_count = '$passengerCount' AND class_type = '$classType'";
+
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output data of each row
+    $flights = [];
+    while($row = $result->fetch_assoc()) {
+        $flights[] = $row;
+    }
+    echo json_encode($flights);
+} else {
+    echo "No flights found";
+
+
+}

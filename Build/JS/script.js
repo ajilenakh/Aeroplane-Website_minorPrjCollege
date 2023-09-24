@@ -173,3 +173,56 @@ function validateLoginForm() {
   // Prevent form from submitting
   return false;
 }
+
+//One Way Form
+
+function one_way_form() {
+  var origin = document.getElementById("origin").value;
+  var destination = document.getElementById("destination").value;
+  var departDate = document.getElementById("depart_date").value;
+  var passengerCount = document.getElementById("passengers").value;
+  var classType = document.getElementById("class_type").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "fetchFlights.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "origin=" +
+    origin +
+    "&destination=" +
+    destination +
+    "&departDate=" +
+    departDate +
+    "&passengerCount=" +
+    passengerCount +
+    "&classType=" +
+    classType;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var flights = JSON.parse(xhr.responseText);
+      displayFlights(flights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+function displayFlights(flights) {
+  var resultsDiv = document.getElementById("results");
+
+  if (flights.length > 0) {
+    var html = "<h2>Available Flights</h2>";
+    for (var i = 0; i < flights.length; i++) {
+      html += "<p>Flight Number: " + flights[i].flight_number + "<br>";
+      html += "Departure Time: " + flights[i].departure_time + "<br>";
+      html += "Arrival Time: " + flights[i].arrival_time + "<br>";
+      html += "Price: $" + flights[i].price + "</p>";
+    }
+  } else {
+    html = "<p>No flights found</p>";
+  }
+
+  resultsDiv.innerHTML = html;
+}
