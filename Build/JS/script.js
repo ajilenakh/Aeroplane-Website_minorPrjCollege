@@ -1,4 +1,4 @@
-// Toggle hamburger menu
+// Toggle hamburgerMenu
 document
   .getElementById("toggleButtonClose")
   .addEventListener("click", toggleMenu);
