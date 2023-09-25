@@ -209,16 +209,23 @@ function one_way_form() {
   xhr.send(params);
 }
 
+//Display Flights
+
 function displayFlights(flights) {
   var resultsDiv = document.getElementById("results");
 
   if (flights.length > 0) {
     var html = "<h2>Available Flights</h2>";
     for (var i = 0; i < flights.length; i++) {
-      html += "<p>Flight Number: " + flights[i].flight_number + "<br>";
-      html += "Departure Time: " + flights[i].departure_time + "<br>";
-      html += "Arrival Time: " + flights[i].arrival_time + "<br>";
-      html += "Price: $" + flights[i].price + "</p>";
+      html += "<p>Flight Number: " + flights[i].flight_id + "<br>";
+      html += "Origin: " + flights[i].origin + "<br>";
+      html += "Destination: " + flights[i].destination + "<br>";
+      html += "Departure Date: " + flights[i].depart_day + "<br>";
+      html += "Departure Time: " + flights[i].depart + "<br>";
+      html += "Arrival Date: " + flights[i].arrival_day + "<br>";
+      html += "Arrival Time: " + flights[i].arrival + "<br>";
+      html += "Price: $" + flights[i].price + "<br>";
+      html += "Seats Available: " + flights[i].seats_available + "</p>";
     }
   } else {
     html = "<p>No flights found</p>";

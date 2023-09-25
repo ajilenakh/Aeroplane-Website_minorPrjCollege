@@ -11,19 +11,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM flights 
             WHERE origin = '$origin' 
             AND destination = '$destination' 
-            AND depart_date = '$departDate' 
-            AND passenger_count >= '$passengerCount' 
+            AND depart_day = '$departDate' 
+            AND seats_available >= '$passengerCount' 
             AND class_type = '$classType'";
 
     $result = $con->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result) {
         $flights = [];
         while ($row = $result->fetch_assoc()) {
             $flights[] = $row;
         }
-        echo json_encode($flights);
+        if (count($flights) > 0) {
+            echo json_encode($flights);
+        } else {
+            echo json_encode(["error" => "No flights found"]);
+        }
     } else {
-        echo json_encode(["error" => "No flights found"]);
+        echo json_encode(["error" => $con->error]);
     }
 }

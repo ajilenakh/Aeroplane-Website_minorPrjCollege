@@ -121,7 +121,7 @@ include_once("functions.php");
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="one_way_form" method="post" action="./fetchFlights.php" onsubmit="return one_way_form()">
+            <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="one_way_form" onsubmit="one_way_form(); return false">
               <div class="p-6">
                 <div class="flex-1 max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
