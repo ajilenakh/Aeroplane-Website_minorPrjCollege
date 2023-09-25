@@ -12,8 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE origin = '$origin' 
             AND destination = '$destination' 
             AND depart_day = '$departDate' 
-            AND seats_available >= '$passengerCount' 
-            AND class_type = '$classType'";
+            AND seats_available >= '$passengerCount'";
 
     $result = $con->query($sql);
 

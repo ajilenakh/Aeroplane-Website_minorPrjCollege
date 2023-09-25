@@ -168,14 +168,15 @@ include_once("functions.php");
                     </select>
                   </div>
                 </div>
-                <div id="results"></div>
               </div>
               <div>
                 <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>
             </p>
+            <div id="results"></div>
           </div>
+
           <div class="hidden opacity-0" id="message" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
             <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">

@@ -215,6 +215,12 @@ function displayFlights(flights) {
   var resultsDiv = document.getElementById("results");
 
   if (flights.length > 0) {
+    //Testing
+    for (var i = 0; i < flights.length; i++) {
+      console.log(flights[i]);
+    }
+    //Code part
+
     var html = "<h2>Available Flights</h2>";
     for (var i = 0; i < flights.length; i++) {
       html += "<p>Flight Number: " + flights[i].flight_id + "<br>";
