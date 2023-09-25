@@ -1,5 +1,5 @@
 <?php
-include("connetcin.php");
+include("connection.php");
 class DatabaseAdaptor
 {
 	private $DB;
