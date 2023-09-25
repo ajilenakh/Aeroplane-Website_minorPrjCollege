@@ -128,13 +128,13 @@ include_once("functions.php");
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-location-arrow"></i>
                     </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text" id="origin">
+                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text" id="origin" required>
                   </div>
                   <div class="mt-4 relative">
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-map-marker"></i>
                     </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" id="destination">
+                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" id="destination" required>
                   </div>
                 </div>
                 <div class="flex max-xs:flex-col gap-4 mt-4">
@@ -142,7 +142,7 @@ include_once("functions.php");
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" id="depart_date" onfocus="(this.type='date')">
+                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" id="depart_date" onfocus="(this.type='date')" required>
                   </div>
 
                 </div>
@@ -151,7 +151,7 @@ include_once("functions.php");
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-user"></i>
                     </div>
-                    <select id="passengers" name="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                    <select id="passengers" name="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" required>
                       <option value="1">1 Passenger</option>
                       <option value="2">2 Passengers</option>
                       <option value="3">3 Passengers</option>
@@ -161,7 +161,7 @@ include_once("functions.php");
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-wheelchair"></i>
                     </div>
-                    <select id="class_type" name="class_type" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
+                    <select id="class_type" name="class_type" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" required>
                       <option value="economy">Economy class</option>
                       <option value="business">Business Class</option>
                       <option value="first">First class</option>
@@ -174,7 +174,29 @@ include_once("functions.php");
               </div>
             </form>
             </p>
-            <div id="results"></div>
+            <!-- component -->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white hidden mt-10" id="results_content">
+              <div class="flex items-center justify-between px-6 py-4">
+                <div class="font-bold text-xl mb-2" id="flightNumber"></div>
+              </div>
+              <div class="px-6 pt-4 pb-2 flex">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" id="flightOrigin">
+                </span>
+                <svg viewBox="0 0 64 64" data-testid="tripDetails-bound-plane-icon" pointer-events="all" aria-hidden="true" class="mt-2 mr-1" role="presentation" style="fill: rgb(102, 102, 102); height: 0.9rem; width: 0.9rem;">
+                  <path d="M43.389 38.269L29.222 61.34a1.152 1.152 0 01-1.064.615H20.99a1.219 1.219 0 01-1.007-.5 1.324 1.324 0 01-.2-1.149L26.2 38.27H11.7l-3.947 6.919a1.209 1.209 0 01-1.092.644H1.285a1.234 1.234 0 01-.895-.392l-.057-.056a1.427 1.427 0 01-.308-1.036L1.789 32 .025 19.656a1.182 1.182 0 01.281-1.009 1.356 1.356 0 01.951-.448l5.4-.027a1.227 1.227 0 01.9.391.85.85 0 01.2.252L11.7 25.73h14.5L19.792 3.7a1.324 1.324 0 01.2-1.149A1.219 1.219 0 0121 2.045h7.168a1.152 1.152 0 011.064.615l14.162 23.071h8.959a17.287 17.287 0 017.839 1.791Q63.777 29.315 64 32q-.224 2.685-3.807 4.478a17.282 17.282 0 01-7.84 1.793h-9.016z"></path>
+                </svg>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" id="flightDestination">
+                </span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" id="flightLength">
+                </span>
+              </div>
+              <div class="px-6 pt-4 pb-2">
+                <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                  Book Now
+                </a>
+              </div>
+            </div>
+
           </div>
 
           <div class="hidden opacity-0" id="message" role="tabpanel">

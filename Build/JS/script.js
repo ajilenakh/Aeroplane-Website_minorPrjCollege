@@ -212,30 +212,25 @@ function one_way_form() {
 //Display Flights
 
 function displayFlights(flights) {
-  var resultsDiv = document.getElementById("results");
+  // Assuming flights is an array of flight objects
 
   if (flights.length > 0) {
-    //Testing
-    for (var i = 0; i < flights.length; i++) {
-      console.log(flights[i]);
-    }
-    //Code part
+    document.getElementById("results_content").classList.toggle("hidden");
+    var flight = flights[0]; // Assuming you want to display the first flight
 
-    var html = "<h2>Available Flights</h2>";
-    for (var i = 0; i < flights.length; i++) {
-      html += "<p>Flight Number: " + flights[i].flight_id + "<br>";
-      html += "Origin: " + flights[i].origin + "<br>";
-      html += "Destination: " + flights[i].destination + "<br>";
-      html += "Departure Date: " + flights[i].depart_day + "<br>";
-      html += "Departure Time: " + flights[i].depart + "<br>";
-      html += "Arrival Date: " + flights[i].arrival_day + "<br>";
-      html += "Arrival Time: " + flights[i].arrival + "<br>";
-      html += "Price: $" + flights[i].price + "<br>";
-      html += "Seats Available: " + flights[i].seats_available + "</p>";
-    }
-  } else {
-    html = "<p>No flights found</p>";
+    // Set values in the HTML
+    document.getElementById("flightNumber").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightLength").textContent = flight.duration;
+    document.getElementById("flightDepartDate").textContent = flight.depart_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    document.getElementById("flightArrivalDate").textContent =
+      flight.arrival_day;
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    document.getElementById("flightPrice").textContent = "$" + flight.price;
+    document.getElementById("flightSeatsAvailable").textContent =
+      flight.seats_available;
   }
-
-  resultsDiv.innerHTML = html;
 }
