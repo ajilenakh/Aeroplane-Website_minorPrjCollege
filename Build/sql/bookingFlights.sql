@@ -30,14 +30,14 @@ CREATE TABLE `flights` (
   `depart` time DEFAULT NULL,
   `arrival_day` date DEFAULT NULL,
   `arrival` time DEFAULT NULL,
-  `length` varchar(50) DEFAULT NULL,
+  `duration` varchar(50) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `seats_available` int(11) DEFAULT NULL,
   PRIMARY KEY (`flight_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `flights` 
-(`flight_id`, `origin`, `destination`, `depart_day`, `depart`, `arrival_day`, `arrival`, `length`, `price`, `seats_available`)
+(`flight_id`, `origin`, `destination`, `depart_day`, `depart`, `arrival_day`, `arrival`, `duration`, `price`, `seats_available`)
 VALUES 
 ('FL001', 'Mumbai', 'Delhi', '2023-09-30', '12:00:00', '2023-09-30', '13:25:00', '2h25m', 2000, 120),
 ('FL002', 'Delhi', 'Bangalore', '2023-10-01', '19:30:00', '2023-10-01', '20:55:00', '2h25m', 1800, 100),

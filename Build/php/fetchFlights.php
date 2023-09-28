@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destination = $_POST['destination'];
     $departDate = $_POST['departDate'];
     $passengerCount = $_POST['passengerCount'];
-    $classType = $_POST['classType'];
 
     $sql = "SELECT * FROM flights 
             WHERE origin = '$origin' 

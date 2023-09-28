@@ -122,13 +122,13 @@ function validateForm() {
   return false;
 }
 
-document.getElementById("username").addEventListener("input", function () {
+/*document.getElementById("username").addEventListener("input", function () {
   document.getElementById("usernameAvailability").innerText = ""; // Clear username availability message
 });
 
 document.getElementById("email").addEventListener("input", function () {
   document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
-});
+});*/
 
 //Checking Login info
 
@@ -143,7 +143,7 @@ function validateLoginForm() {
   var xmr = new XMLHttpRequest();
   xmr.onreadystatechange = function () {
     if (xmr.readyState === 4) {
-      //console.log(JSON.parse(xhr.responseText)); // Add this line
+      //console.log(JSON.parse(xhr.responseText));
       if (xmr.status === 200) {
         var response = JSON.parse(xmr.responseText);
         if (response.success) {
@@ -181,7 +181,6 @@ function one_way_form() {
   var destination = document.getElementById("destination").value;
   var departDate = document.getElementById("depart_date").value;
   var passengerCount = document.getElementById("passengers").value;
-  var classType = document.getElementById("class_type").value;
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "./fetchFlights.php", true);
@@ -195,13 +194,12 @@ function one_way_form() {
     "&departDate=" +
     departDate +
     "&passengerCount=" +
-    passengerCount +
-    "&classType=" +
-    classType;
+    passengerCount;
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var flights = JSON.parse(xhr.responseText);
+      //console.log(flights);  //For testing the JSON file returned
       displayFlights(flights);
     }
   };
@@ -212,25 +210,23 @@ function one_way_form() {
 //Display Flights
 
 function displayFlights(flights) {
-  // Assuming flights is an array of flight objects
-
   if (flights.length > 0) {
-    document.getElementById("results_content").classList.toggle("hidden");
-    var flight = flights[0]; // Assuming you want to display the first flight
+    var flight = flights[0];
+    document.getElementById("results_content").classList.remove("hidden");
 
-    // Set values in the HTML
-    document.getElementById("flightNumber").textContent = flight.flight_id;
-    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    //document.getElementById("flightArrivalDate").textContent =
+    //flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
     document.getElementById("flightDestination").textContent =
       flight.destination;
-    document.getElementById("flightLength").textContent = flight.duration;
-    document.getElementById("flightDepartDate").textContent = flight.depart_day;
-    document.getElementById("flightDepartTime").textContent = flight.depart;
-    document.getElementById("flightArrivalDate").textContent =
-      flight.arrival_day;
-    document.getElementById("flightArrivalTime").textContent = flight.arrival;
-    document.getElementById("flightPrice").textContent = "$" + flight.price;
-    document.getElementById("flightSeatsAvailable").textContent =
-      flight.seats_available;
+    // document.getElementById("flightDuration").textContent = flight.duration;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    //document.getElementById("flightNum").textContent = flight.flight_num; // Change to duration
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+    //document.getElementById("flightSeatsAvailable").textContent =
+    //flight.seats_available;
   }
 }
