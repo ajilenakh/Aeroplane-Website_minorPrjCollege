@@ -7,19 +7,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $flightNum = $_POST["flightNum"];
 
         $sql = "SELECT * FROM flights WHERE flight_id='$flightNum'";
-    } else if (isset($_POST["origin"]) && isset($_POST["destination"]) && isset($_POST["departDate"])) {
+    } else if (isset($_POST["routeOrigin"]) && isset($_POST["routeDestination"]) && isset($_POST["departDateRoute"])) {
         // Search by origin, destination, and departure date
-        $origin = $_POST["origin"];
-        $destination = $_POST["destination"];
-        $departDate = $_POST["departDate"];
+        $routeOrigin = $_POST["routeOrigin"];
+        $routeDestination = $_POST["routeDestination"];
+        $departDateRoute = $_POST["departDateRoute"];
 
-        $sql = "SELECT * FROM flights WHERE origin='$origin' AND destination='$destination' AND departure_date='$departDate'";
+        $sql = "SELECT * FROM flights WHERE origin='$routeOrigin' AND destination='$routeDestination' AND depart_day='$departDateRoute'";
     } else {
         echo json_encode(["error" => "Invalid request"]);
         exit();
     }
 
     $result = $con->query($sql);
+
+    if ($result === false) {
+        echo json_encode(["error" => "Database query failed: " . $con->error]);
+        exit();
+    }
 
     $flights = [];
 

@@ -162,14 +162,14 @@ $user_data = check_login($con);
           </div>
           <div class="hidden opacity-0" id="message" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByRoute" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form id="searchByRoute" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" onsubmit="flightRouteResults(); return false">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-location-arrow "></i>
                     </div>
-                    <input id="boardingFrom" name="boardingFrom" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text">
+                    <input id="routeOrigin" name="routeOrigin" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text" required>
                   </div>
                 </div>
                 <div class="max-xs:flex-col gap-4">
@@ -177,7 +177,7 @@ $user_data = check_login($con);
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-map-marker"></i>
                     </div>
-                    <input id="destination" name="destination" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text">
+                    <input id="routeDestination" name="routeDestination" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" required>
                   </div>
                 </div>
                 <div class="flex-1 max-xs:flex-col gap-4">
@@ -185,7 +185,7 @@ $user_data = check_login($con);
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input id="departDateRoute" name="departDateRoute" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="date" placeholder="Depart">
+                    <input id="departDateRoute" name="departDateRoute" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="date" placeholder="Depart" required>
                   </div>
                 </div>
               </div>
@@ -193,7 +193,34 @@ $user_data = check_login($con);
                 <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>
-            <div id="results-container"></div>
+
+
+            <!----Flight Card Showing results--->
+            <div class="p-10 hidden" id="result_fetch_route_content">
+              <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
+                <div class="mt-2 flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
+                  <div class="flex flex-row place-items-center p-2">
+                    <img alt="#" class="w-10 h-10" src="../images/flightCardLogo.jpg" style="opacity: 1; transform-origin: 0% 50% 0px; transform: none;" />
+                    <div class="flex flex-col ml-2">
+                      <p class="text-xs text-gray-500 font-bold" id="flightRouteId">
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col p-2">
+                    <p class="font-bold" id="flightRouteDepartTime"></p>
+                    <p class="font-bold" id="flightRouteDepartDate"></p>
+                    <p class="text-gray-500" id="flightRouteOrigin"></p>
+                  </div>
+                  <div class="flex flex-col flex-wrap p-2">
+                    <p class="font-bold" id="flightRouteArrivalTime"></p>
+                    <p class="font-bold" id="flightRouteArrivalDate"></p>
+                    <p class="text-gray-500" id="flightRouteDestination"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             </p>
           </div>
         </div>

@@ -260,7 +260,7 @@ function flightNumberResults() {
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log(xhr.responseText);
+      //console.log(xhr.responseText);
       var flights = JSON.parse(xhr.responseText);
       displayStatusFlights(flights);
     }
@@ -283,6 +283,88 @@ function displayStatusFlights(flights) {
       flight.destination;
     document.getElementById("flightId").textContent = flight.flight_id;
     document.getElementById("flightOrigin").textContent = flight.origin;
-    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+    //document.getElementById("flightPrice").textContent = "Rs " + flight.price;
   }
+}
+
+function flightRouteResults() {
+  var routeOrigin = document.getElementById("routeOrigin").value;
+  var routeDestination = document.getElementById("routeDestination").value;
+  var departDateRoute = document.getElementById("departDateRoute").value;
+  /*console.log(routeDestination);
+  console.log(routeOrigin);
+  console.log(departDateRoute);*/
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./statusFetch.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "routeOrigin=" +
+    routeOrigin +
+    "&routeDestination=" +
+    routeDestination +
+    "&departDateRoute=" +
+    departDateRoute;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+      var routeFlights = JSON.parse(xhr.responseText);
+      displayRouteStatusFlights(routeFlights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+function displayRouteStatusFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document
+      .getElementById("result_fetch_route_content")
+      .classList.remove("hidden");
+
+    document.getElementById("flightRouteArrivalTime").textContent =
+      flight.arrival;
+    document.getElementById("flightRouteArrivalDate").textContent =
+      flight.arrival_day;
+    document.getElementById("flightRouteDepartTime").textContent =
+      flight.depart;
+    document.getElementById("flightRouteDepartDate").textContent =
+      flight.depart_day;
+    document.getElementById("flightRouteDestination").textContent =
+      flight.destination;
+    document.getElementById("flightRouteId").textContent = flight.flight_id;
+
+    document.getElementById("flightRouteOrigin").textContent = flight.origin;
+    //document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
+//Book ticket
+
+function bookTicket(flight_id, passenger_count) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./bookTicket.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  // Assuming user is logged in and user_id is available in session
+  var params = "flight_id=" + flight_id + "&passenger_count=" + passenger_count;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          alert("Booking successful!");
+        } else {
+          alert("Booking failed. Please try again.");
+        }
+      } else {
+        alert("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send(params);
 }
