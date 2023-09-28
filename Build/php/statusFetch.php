@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Route search
         $boardingFrom = $_POST['boardingFrom'];
         $destination = $_POST['destination'];
-        $sql = "SELECT * FROM flights WHERE origin='$boardingFrom' AND destination='$destination'";
+        $departDateRoute = $_POST['departDateRoute'];  // Get the date from the form
+        $sql = "SELECT * FROM flights WHERE origin='$boardingFrom' AND destination='$destination' AND depart_day='$departDateRoute'";
     } else {
         die("Invalid request.");
     }

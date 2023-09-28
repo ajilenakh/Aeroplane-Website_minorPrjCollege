@@ -157,7 +157,7 @@ $user_data = check_login($con);
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input id="departDateRoute" name="departDateRoute" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="text" placeholder="Depart" onfocus="(this.type='date')">
+                    <input id="departDateRoute" name="departDateRoute" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 mr-10 rounded placeholder:text-gray-800" type="date" placeholder="Depart">
                   </div>
                 </div>
               </div>
