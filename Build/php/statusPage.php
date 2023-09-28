@@ -103,7 +103,7 @@ $user_data = check_login($con);
         <ul class="relative flex list-none flex-wrap rounded-xl bg-blue-gray-50/60 p-1 lg:bg-gray-200" data-tabs="tabs" role="list">
           <li class="z-30 flex-auto text-center">
             <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out" data-tab-target="" active="" role="tab" aria-selected="true" aria-controls="app">
-              <span class="ml-1">Search by flight number</span>
+              <span class="ml-1">Search by flight id</span>
             </a>
           </li>
           <li class="z-30 flex-auto text-center">
@@ -115,14 +115,14 @@ $user_data = check_login($con);
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByFlightNumber" action="./statusFetch.php" method="post" onsubmit="return searchFlightNumber()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form id="searchByflightId" action="./statusFetch.php" method="post" onsubmit="return searchflightId()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-map-marker"></i>
                     </div>
-                    <input id="flightNumber" name="flightNumber" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Flight Number" type="text">
+                    <input id="flightId" name="flightId" class="w-2/3 bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Flight Id" type="text">
                   </div>
                 </div>
                 <div class="flex-1 max-xs:flex-col gap-4">
