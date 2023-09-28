@@ -118,6 +118,8 @@ include_once("functions.php");
             </a>
           </li>
         </ul>
+
+        <!--------One Way Form--------->
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
@@ -176,7 +178,6 @@ include_once("functions.php");
                       </p>
                     </div>
                   </div>
-
                   <div class="flex flex-col p-2">
                     <p class="font-bold" id="flightDepartTime"></p>
                     <p class="text-gray-500" id="flightOrigin"></p>
@@ -197,16 +198,18 @@ include_once("functions.php");
                       <p class="text-xs text-gray-500">Price per adult</p>
                     </div>
                     <button class="w-32 h-11 rounded flex border-solid border bg-white mx-2 justify-center place-items-center">
-                      <div class="">Book</div>
+                      <div onclick="bookTicket(document.getElementById('flightId').innerHTML, document.getElementById('passengers').value)">Book</div>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!--------Round Trip Form---->
           <div class="hidden opacity-0" id="message" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="round_trip_form" onsubmit="round_trip_form(); return false">
               <div class="p-6">
                 <div class="flex-1 max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
@@ -245,16 +248,6 @@ include_once("functions.php");
                       <option>1 Passenger</option>
                       <option>2 Passengers</option>
                       <option>3 Passengers</option>
-                    </select>
-                  </div>
-                  <div class="flex-1 relative">
-                    <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
-                      <i class="fa fa-wheelchair"></i>
-                    </div>
-                    <select class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800">
-                      <option>Economy class</option>
-                      <option>Business Class</option>
-                      <option>First class</option>
                     </select>
                   </div>
                 </div>

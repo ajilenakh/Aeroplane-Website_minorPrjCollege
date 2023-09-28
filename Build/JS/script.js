@@ -209,28 +209,45 @@ function one_way_form() {
   xhr.send(params);
 }
 
-//Display Flights
+//Display One Way Flights
 
 function displayFlights(flights) {
-  // Assuming flights is an array of flight objects
-
   if (flights.length > 0) {
-    document.getElementById("results_content").classList.toggle("hidden");
-    var flight = flights[0]; // Assuming you want to display the first flight
+    var flight = flights[0];
+    document.getElementById("results_content").classList.remove("hidden");
 
-    // Set values in the HTML
-    document.getElementById("flightNumber").textContent = flight.flight_id;
-    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    //document.getElementById("flightArrivalDate").textContent =
+    //flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
     document.getElementById("flightDestination").textContent =
       flight.destination;
-    document.getElementById("flightLength").textContent = flight.duration;
-    document.getElementById("flightDepartDate").textContent = flight.depart_day;
-    document.getElementById("flightDepartTime").textContent = flight.depart;
-    document.getElementById("flightArrivalDate").textContent =
-      flight.arrival_day;
-    document.getElementById("flightArrivalTime").textContent = flight.arrival;
-    document.getElementById("flightPrice").textContent = "$" + flight.price;
-    document.getElementById("flightSeatsAvailable").textContent =
-      flight.seats_available;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
+function searchFlight() {
+  // Flight ID search
+  var flightId = document.getElementById("flightId").value;
+  if (flightId !== "") {
+    document.getElementById("searchByflightId").submit();
+  } else {
+    alert("Please enter a flight ID.");
+    return false;
+  }
+}
+
+function searchFlightRoute() {
+  // Route search
+  var boardingFrom = document.getElementById("boardingFrom").value;
+  var destination = document.getElementById("destination").value;
+  if (boardingFrom !== "" && destination !== "") {
+    document.getElementById("searchByRoute").submit();
+  } else {
+    alert("Please enter both boarding from and destination.");
+    return false;
   }
 }
