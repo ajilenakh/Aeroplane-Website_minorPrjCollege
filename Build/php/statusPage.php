@@ -115,10 +115,10 @@ $user_data = check_login($con);
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByflightId" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" onsubmit="flightNumberResults(); return false">
+            <form id="searchByflightId" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden accent-gray-800" onsubmit="flightNumberResults(); return false">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
-                  <div class="mt-4 relative ">
+                  <div class="mt-4 relative">
                     <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
                       <i class="fa fa-map-marker"></i>
                     </div>
@@ -126,7 +126,7 @@ $user_data = check_login($con);
                   </div>
                 </div>
               </div>
-              <div class="flex mx-auto">
+              <div class="flex mx-auto mt-4">
                 <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>

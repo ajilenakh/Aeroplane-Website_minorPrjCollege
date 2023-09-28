@@ -105,97 +105,91 @@ include_once("functions.php");
 
     <!-----------Booking Form------------>
     <div class="w-2/3 mx-auto py-32 sm:py-48 lg:py-56" id="booking-form">
-      <div class="relative block">
-        <ul class="relative flex list-none flex-wrap rounded-xl bg-blue-gray-50/60 p-1 lg:bg-gray-200" data-tabs="tabs" role="list">
-          <li class="z-30 flex-auto text-center">
-            <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out" data-tab-target="" active="" role="tab" aria-selected="true" aria-controls="app">
-              <span class="ml-1">One Way</span>
-            </a>
-          </li>
-        </ul>
+      <div class="relative block text-center mb-8">
+        <span class="mx-auto text-3xl font-bold">Flight Reservation</span>
+      </div>
 
-        <!--------One Way Form--------->
-        <div data-tab-content="" class="p-5">
-          <div class="block opacity-100" id="app" role="tabpanel">
-            <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="one_way_form" onsubmit="one_way_form(); return false">
-              <div class="p-6">
-                <div class="flex-1 max-xs:flex-col gap-4">
-                  <div class="mt-4 relative ">
-                    <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
-                      <i class="fa fa-location-arrow"></i>
-                    </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text" id="origin" required>
+      <!--------One Way Form--------->
+      <div data-tab-content="" class="p-5">
+        <div class="block opacity-100" id="app" role="tabpanel">
+          <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
+          <form class="m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" id="one_way_form" onsubmit="one_way_form(); return false">
+            <div class="p-6">
+              <div class="flex-1 max-xs:flex-col gap-4">
+                <div class="mt-4 relative ">
+                  <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
+                    <i class="fa fa-location-arrow"></i>
                   </div>
-                  <div class="mt-4 relative">
-                    <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
-                      <i class="fa fa-map-marker"></i>
-                    </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" id="destination" required>
-                  </div>
+                  <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Boarding from..." type="text" id="origin" required>
                 </div>
-                <div class="flex max-xs:flex-col gap-4 mt-4">
-                  <div class="flex-1 relative">
-                    <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" id="depart_date" onfocus="(this.type='date')" required>
+                <div class="mt-4 relative">
+                  <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
+                    <i class="fa fa-map-marker"></i>
                   </div>
-
-                </div>
-                <div class="flex max-xs:flex-col gap-4 mt-4">
-                  <div class="flex-1 relative">
-                    <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
-                      <i class="fa fa-user"></i>
-                    </div>
-                    <select id="passengers" name="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" required>
-                      <option value="1">1 Passenger</option>
-                      <option value="2">2 Passengers</option>
-                      <option value="3">3 Passengers</option>
-                    </select>
-                  </div>
+                  <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" placeholder="Destination..." type="text" id="destination" required>
                 </div>
               </div>
-              <div>
-                <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
-              </div>
-            </form>
-            </p>
+              <div class="flex max-xs:flex-col gap-4 mt-4">
+                <div class="flex-1 relative">
+                  <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" type="text" placeholder="Depart" id="depart_date" onfocus="(this.type='date')" required>
+                </div>
 
-            <!----Flight Card Showing results--->
-            <div class="p-10 hidden" id="results_content">
-              <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
-                <div class="mt-2 flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
-                  <div class="flex flex-row place-items-center p-2">
-                    <img alt="#" class="w-10 h-10" src="../images/flightCardLogo.jpg" style="opacity: 1; transform-origin: 0% 50% 0px; transform: none;" />
-                    <div class="flex flex-col ml-2">
-                      <p class="text-xs text-gray-500 font-bold" id="flightId">
-                      </p>
-                    </div>
+              </div>
+              <div class="flex max-xs:flex-col gap-4 mt-4">
+                <div class="flex-1 relative">
+                  <div class="absolute top-0 left-0 w-8 h-8 flex justify-center items-center">
+                    <i class="fa fa-user"></i>
                   </div>
-                  <div class="flex flex-col p-2">
-                    <p class="font-bold" id="flightDepartTime"></p>
-                    <p class="text-gray-500" id="flightOrigin"></p>
-                  </div>
-                  <div class="flex flex-col flex-wrap p-2">
-                    <p class="font-bold" id="flightArrivalTime"></p>
-                    <p class="text-gray-500" id="flightDestination"></p>
+                  <select id="passengers" name="passengers" class="w-full bg-gray-100 text-xs font-bold border-none py-2 pl-8 pr-4 rounded placeholder:text-gray-800" required>
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button class="bg-gray-800 uppercase py-4 w-full text-white text-xs tracking-widest">Search Flights</button>
+            </div>
+          </form>
+          </p>
+
+          <!----Flight Card Showing results--->
+          <div class="p-10 hidden" id="results_content">
+            <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
+              <div class="mt-2 flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
+                <div class="flex flex-row place-items-center p-2">
+                  <img alt="#" class="w-10 h-10" src="../images/flightCardLogo.jpg" style="opacity: 1; transform-origin: 0% 50% 0px; transform: none;" />
+                  <div class="flex flex-col ml-2">
+                    <p class="text-xs text-gray-500 font-bold" id="flightId">
+                    </p>
                   </div>
                 </div>
-                <div class="mt-4 bg-gray-100 flex flex-row flex-wrap md:flex-nowrap justify-between items-baseline">
-                  <div class="flex mx-6 py-4 flex-row flex-wrap">
-                    <svg class="w-12 h-10 p-2 mx-2 self-center bg-gray-400 rounded-full fill-current text-white" viewBox="0 0 64 64" pointer-events="all" aria-hidden="true" role="presentation">
-                      <path d="M43.389 38.269L29.222 61.34a1.152 1.152 0 01-1.064.615H20.99a1.219 1.219 0 01-1.007-.5 1.324 1.324 0 01-.2-1.149L26.2 38.27H11.7l-3.947 6.919a1.209 1.209 0 01-1.092.644H1.285a1.234 1.234 0 01-.895-.392l-.057-.056a1.427 1.427 0 01-.308-1.036L1.789 32 .025 19.656a1.182 1.182 0 01.281-1.009 1.356 1.356 0 01.951-.448l5.4-.027a1.227 1.227 0 01.9.391.85.85 0 01.2.252L11.7 25.73h14.5L19.792 3.7a1.324 1.324 0 01.2-1.149A1.219 1.219 0 0121 2.045h7.168a1.152 1.152 0 011.064.615l14.162 23.071h8.959a17.287 17.287 0 017.839 1.791Q63.777 29.315 64 32q-.224 2.685-3.807 4.478a17.282 17.282 0 01-7.84 1.793h-9.016z"></path>
-                    </svg>
-                    <div class="text-sm mx-2 flex flex-col">
-                      <p class="">Standard Ticket</p>
-                      <p class="font-bold" id="flightPrice"></p>
-                      <p class="text-xs text-gray-500">Price per adult</p>
-                    </div>
-                    <button class="w-32 h-11 rounded flex border-solid border bg-white mx-2 justify-center place-items-center">
-                      <div onclick="checkLoginAndBook()">Book</div>
-                    </button>
+                <div class="flex flex-col p-2">
+                  <p class="font-bold" id="flightDepartTime"></p>
+                  <p class="text-gray-500" id="flightOrigin"></p>
+                </div>
+                <div class="flex flex-col flex-wrap p-2">
+                  <p class="font-bold" id="flightArrivalTime"></p>
+                  <p class="text-gray-500" id="flightDestination"></p>
+                </div>
+              </div>
+              <div class="mt-4 bg-gray-100 flex flex-row flex-wrap md:flex-nowrap justify-between items-baseline">
+                <div class="flex mx-6 py-4 flex-row flex-wrap">
+                  <svg class="w-12 h-10 p-2 mx-2 self-center bg-gray-400 rounded-full fill-current text-white" viewBox="0 0 64 64" pointer-events="all" aria-hidden="true" role="presentation">
+                    <path d="M43.389 38.269L29.222 61.34a1.152 1.152 0 01-1.064.615H20.99a1.219 1.219 0 01-1.007-.5 1.324 1.324 0 01-.2-1.149L26.2 38.27H11.7l-3.947 6.919a1.209 1.209 0 01-1.092.644H1.285a1.234 1.234 0 01-.895-.392l-.057-.056a1.427 1.427 0 01-.308-1.036L1.789 32 .025 19.656a1.182 1.182 0 01.281-1.009 1.356 1.356 0 01.951-.448l5.4-.027a1.227 1.227 0 01.9.391.85.85 0 01.2.252L11.7 25.73h14.5L19.792 3.7a1.324 1.324 0 01.2-1.149A1.219 1.219 0 0121 2.045h7.168a1.152 1.152 0 011.064.615l14.162 23.071h8.959a17.287 17.287 0 017.839 1.791Q63.777 29.315 64 32q-.224 2.685-3.807 4.478a17.282 17.282 0 01-7.84 1.793h-9.016z"></path>
+                  </svg>
+                  <div class="text-sm mx-2 flex flex-col">
+                    <p class="">Standard Ticket</p>
+                    <p class="font-bold" id="flightPrice"></p>
+                    <p class="text-xs text-gray-500">Price per adult</p>
                   </div>
+                  <button class="w-32 h-11 rounded flex border-solid border bg-white mx-2 justify-center place-items-center">
+                    <div onclick="checkLoginAndBook()">Book</div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -203,6 +197,7 @@ include_once("functions.php");
         </div>
       </div>
     </div>
+  </div>
   </div>
   <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
     <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
