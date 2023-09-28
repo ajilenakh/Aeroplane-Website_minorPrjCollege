@@ -305,3 +305,26 @@ function displayRoundTripFlights(flights) {
     document.getElementById("flightPrice").textContent = "Rs " + flight.price;
   }
 }
+
+function searchFlight() {
+  // Flight ID search
+  var flightId = document.getElementById("flightId").value;
+  if (flightId !== "") {
+    document.getElementById("searchByflightId").submit();
+  } else {
+    alert("Please enter a flight ID.");
+    return false;
+  }
+}
+
+function searchFlightRoute() {
+  // Route search
+  var boardingFrom = document.getElementById("boardingFrom").value;
+  var destination = document.getElementById("destination").value;
+  if (boardingFrom !== "" && destination !== "") {
+    document.getElementById("searchByRoute").submit();
+  } else {
+    alert("Please enter both boarding from and destination.");
+    return false;
+  }
+}
