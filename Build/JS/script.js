@@ -207,7 +207,7 @@ function one_way_form() {
   xhr.send(params);
 }
 
-//Display Flights
+//Display One Way Flights
 
 function displayFlights(flights) {
   if (flights.length > 0) {
@@ -215,18 +215,93 @@ function displayFlights(flights) {
     document.getElementById("results_content").classList.remove("hidden");
 
     document.getElementById("flightArrivalTime").textContent = flight.arrival;
-    //document.getElementById("flightArrivalDate").textContent =
-    //flight.arrival_day;
     document.getElementById("flightDepartTime").textContent = flight.depart;
-    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
     document.getElementById("flightDestination").textContent =
       flight.destination;
-    // document.getElementById("flightDuration").textContent = flight.duration;
     document.getElementById("flightId").textContent = flight.flight_id;
-    //document.getElementById("flightNum").textContent = flight.flight_num; // Change to duration
     document.getElementById("flightOrigin").textContent = flight.origin;
     document.getElementById("flightPrice").textContent = "Rs " + flight.price;
-    //document.getElementById("flightSeatsAvailable").textContent =
-    //flight.seats_available;
+  }
+}
+
+//Book Ticket Option
+
+function bookTicket(flight_id, passenger_count) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./bookTicket.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params = "flight_id=" + flight_id + "&passenger_count=" + passenger_count;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        console.log(xhr.responseText);
+        var response = JSON.parse(xhr.responseText);
+
+        if (response.success) {
+          alert("Booking successful!");
+        } else {
+          alert("Booking failed. Please try again.");
+        }
+      } else {
+        alert("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Round Trip Form
+
+function round_trip_form() {
+  var origin = document.getElementById("origin").value;
+  var destination = document.getElementById("destination").value;
+  var departDate = document.getElementById("depart_date").value;
+  var arrivalDate = document.getElementById("arrivalDate").value;
+  var passengerCount = document.getElementById("passengers").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./roundTripProcess.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "origin=" +
+    origin +
+    "&destination=" +
+    destination +
+    "&departDate=" +
+    departDate +
+    "&arrivalDate=" +
+    arrivalDate +
+    "&passengerCount=" +
+    passengerCount;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var round_trip_flights = JSON.parse(xhr.responseText);
+      //console.log(round_trip_flights);  //For testing the JSON file returned
+      displayRoundTripFlights(round_trip_flights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Display Round trip flights
+
+function displayRoundTripFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document.getElementById("results_content").classList.remove("hidden");
+
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
   }
 }
