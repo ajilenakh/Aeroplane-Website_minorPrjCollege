@@ -193,7 +193,7 @@ include_once("functions.php");
                       <p class="text-xs text-gray-500">Price per adult</p>
                     </div>
                     <button class="w-32 h-11 rounded flex border-solid border bg-white mx-2 justify-center place-items-center">
-                      <div onclick="bookTicket(document.getElementById('flightId').innerHTML, document.getElementById('passengers').value) ">Book</div>
+                      <div onclick="checkLoginAndBook()">Book</div>
                     </button>
                   </div>
                 </div>

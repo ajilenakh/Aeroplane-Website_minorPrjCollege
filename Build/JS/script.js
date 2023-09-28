@@ -308,7 +308,7 @@ function flightRouteResults() {
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log(xhr.responseText);
+      //console.log(xhr.responseText);
       var routeFlights = JSON.parse(xhr.responseText);
       displayRouteStatusFlights(routeFlights);
     }
@@ -367,4 +367,30 @@ function bookTicket(flight_id, passenger_count) {
   };
 
   xhr.send(params);
+}
+
+//Check login and book
+
+function checkLoginAndBook() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "./check_login.php", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      if (response.isLoggedIn) {
+        bookTicket(
+          document.getElementById("flightId").innerHTML,
+          document.getElementById("passengers").value
+        );
+      } else {
+        alert("You need to log in before booking a ticket.");
+        // You can also redirect the user to the login page here if you have one
+        window.location.href = "loginPage.php";
+      }
+    }
+  };
+
+  xhr.send();
 }
