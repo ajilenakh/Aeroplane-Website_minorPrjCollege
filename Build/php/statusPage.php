@@ -115,7 +115,7 @@ $user_data = check_login($con);
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByflightId" action="./statusFetch.php" method="post" onsubmit="return searchflightId()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form id="searchByflightId" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
@@ -130,11 +130,12 @@ $user_data = check_login($con);
                 <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>
+            <div id="results-container"></div>
             </p>
           </div>
           <div class="hidden opacity-0" id="message" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByRoute" action="./statusFetch.php" method="post" onsubmit="return searchFlightRoute()" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form id="searchByRoute" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
@@ -165,6 +166,7 @@ $user_data = check_login($con);
                 <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>
+            <div id="results-container"></div>
             </p>
           </div>
         </div>

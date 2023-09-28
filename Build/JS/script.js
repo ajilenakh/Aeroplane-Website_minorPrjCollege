@@ -181,7 +181,6 @@ function one_way_form() {
   var destination = document.getElementById("destination").value;
   var departDate = document.getElementById("depart_date").value;
   var passengerCount = document.getElementById("passengers").value;
-  var classType = document.getElementById("class_type").value;
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "./fetchFlights.php", true);
@@ -195,9 +194,7 @@ function one_way_form() {
     "&departDate=" +
     departDate +
     "&passengerCount=" +
-    passengerCount +
-    "&classType=" +
-    classType;
+    passengerCount;
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -249,5 +246,54 @@ function searchFlightRoute() {
   } else {
     alert("Please enter both boarding from and destination.");
     return false;
+  }
+}
+
+async function fetchAndDisplayResults() {
+  try {
+    const response = await fetch("statusFetch.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    // Check for errors
+    if (data.flightIdResults.error) {
+      document.getElementById(
+        "results-container"
+      ).innerHTML = `<p>${data.flightIdResults.error}</p>`;
+      return;
+    }
+
+    // Display flight ID results
+    const flightIdResultsHtml = data.flightIdResults
+      .map((flight) => {
+        return `<p>Flight ID: ${flight.flight_id}, Origin: ${flight.origin}, Destination: ${flight.destination}</p>`;
+      })
+      .join("");
+
+    // Check for route search errors
+    if (data.routeResults.error) {
+      document.getElementById(
+        "results-container"
+      ).innerHTML = `<p>${data.routeResults.error}</p>`;
+      return;
+    }
+
+    // Display route results
+    const routeResultsHtml = data.routeResults
+      .map((flight) => {
+        return `<p>Flight ID: ${flight.flight_id}, Origin: ${flight.origin}, Destination: ${flight.destination}</p>`;
+      })
+      .join("");
+
+    // Display the results in the specified container
+    document.getElementById("results-container").innerHTML =
+      flightIdResultsHtml + routeResultsHtml;
+  } catch (error) {
+    console.error("Error fetching results:", error);
   }
 }
