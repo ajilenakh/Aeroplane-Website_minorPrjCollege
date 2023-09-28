@@ -115,7 +115,7 @@ $user_data = check_login($con);
         <div data-tab-content="" class="p-5">
           <div class="block opacity-100" id="app" role="tabpanel">
             <p class="block font-sans text-base font-light leading-relaxed text-inherit text-gray-500 antialiased">
-            <form id="searchByflightId" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800">
+            <form id="searchByflightId" class="m-auto flex bg-white drop-shadow-lg rounded-lg overflow-hidden  accent-gray-800" onsubmit="flightNumberResults(); return false">
               <div class="p-6 flex-1">
                 <div class="max-xs:flex-col gap-4">
                   <div class="mt-4 relative ">
@@ -130,7 +130,34 @@ $user_data = check_login($con);
                 <button type="submit" class="bg-gray-800 uppercase py-4 px-4 rounded text-white text-xs tracking-widest">Search Flights</button>
               </div>
             </form>
-            <div id="results-container"></div>
+
+
+            <!----Flight Card Showing results--->
+            <div class="p-10 hidden" id="result_fetch_content">
+              <div class="max-w-full  bg-white flex flex-col rounded overflow-hidden shadow-lg">
+                <div class="mt-2 flex sm:flex-row mx-6 sm:justify-between flex-wrap ">
+                  <div class="flex flex-row place-items-center p-2">
+                    <img alt="#" class="w-10 h-10" src="../images/flightCardLogo.jpg" style="opacity: 1; transform-origin: 0% 50% 0px; transform: none;" />
+                    <div class="flex flex-col ml-2">
+                      <p class="text-xs text-gray-500 font-bold" id="flightId">
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col p-2">
+                    <p class="font-bold" id="flightDepartTime"></p>
+                    <p class="font-bold" id="flightDepartDate"></p>
+                    <p class="text-gray-500" id="flightOrigin"></p>
+                  </div>
+                  <div class="flex flex-col flex-wrap p-2">
+                    <p class="font-bold" id="flightArrivalTime"></p>
+                    <p class="font-bold" id="flightArrivalDate"></p>
+                    <p class="text-gray-500" id="flightDestination"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             </p>
           </div>
           <div class="hidden opacity-0" id="message" role="tabpanel">

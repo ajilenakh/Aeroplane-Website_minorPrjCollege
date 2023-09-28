@@ -122,13 +122,13 @@ function validateForm() {
   return false;
 }
 
-document.getElementById("username").addEventListener("input", function () {
+/*document.getElementById("username").addEventListener("input", function () {
   document.getElementById("usernameAvailability").innerText = ""; // Clear username availability message
 });
 
 document.getElementById("email").addEventListener("input", function () {
   document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
-});
+});*/
 
 //Checking Login info
 
@@ -249,51 +249,40 @@ function searchFlightRoute() {
   }
 }
 
-async function fetchAndDisplayResults() {
-  try {
-    const response = await fetch("statusFetch.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+function flightNumberResults() {
+  var flightNum = document.getElementById("flightId").value;
 
-    const data = await response.json();
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./statusFetch.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    // Check for errors
-    if (data.flightIdResults.error) {
-      document.getElementById(
-        "results-container"
-      ).innerHTML = `<p>${data.flightIdResults.error}</p>`;
-      return;
+  var params = "flightNum=" + flightNum;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+      var flights = JSON.parse(xhr.responseText);
+      displayStatusFlights(flights);
     }
+  };
 
-    // Display flight ID results
-    const flightIdResultsHtml = data.flightIdResults
-      .map((flight) => {
-        return `<p>Flight ID: ${flight.flight_id}, Origin: ${flight.origin}, Destination: ${flight.destination}</p>`;
-      })
-      .join("");
+  xhr.send(params);
+}
 
-    // Check for route search errors
-    if (data.routeResults.error) {
-      document.getElementById(
-        "results-container"
-      ).innerHTML = `<p>${data.routeResults.error}</p>`;
-      return;
-    }
+function displayStatusFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document.getElementById("result_fetch_content").classList.remove("hidden");
 
-    // Display route results
-    const routeResultsHtml = data.routeResults
-      .map((flight) => {
-        return `<p>Flight ID: ${flight.flight_id}, Origin: ${flight.origin}, Destination: ${flight.destination}</p>`;
-      })
-      .join("");
-
-    // Display the results in the specified container
-    document.getElementById("results-container").innerHTML =
-      flightIdResultsHtml + routeResultsHtml;
-  } catch (error) {
-    console.error("Error fetching results:", error);
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    document.getElementById("flightArrivalDate").textContent =
+      flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    document.getElementById("flightDepartDate").textContent = flight.depart_day;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
   }
 }
