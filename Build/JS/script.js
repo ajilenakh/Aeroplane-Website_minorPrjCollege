@@ -181,7 +181,6 @@ function one_way_form() {
   var destination = document.getElementById("destination").value;
   var departDate = document.getElementById("depart_date").value;
   var passengerCount = document.getElementById("passengers").value;
-  var classType = document.getElementById("class_type").value;
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "./fetchFlights.php", true);
@@ -195,9 +194,7 @@ function one_way_form() {
     "&departDate=" +
     departDate +
     "&passengerCount=" +
-    passengerCount +
-    "&classType=" +
-    classType;
+    passengerCount;
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
