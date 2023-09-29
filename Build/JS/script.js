@@ -1,14 +1,13 @@
-// Opening button for hamburger menu
+// Toggle hamburgerMenu
 document
   .getElementById("toggleButtonClose")
-  .addEventListener("click", function () {
-    document.getElementById("menuItems").classList.toggle("hidden");
-  });
+  .addEventListener("click", toggleMenu);
+document.getElementById("openButton").addEventListener("click", toggleMenu);
 
-// Closing button for hamburger menu
-document.getElementById("openButton").addEventListener("click", function () {
+// Function to toggle menu visibility
+function toggleMenu() {
   document.getElementById("menuItems").classList.toggle("hidden");
-});
+}
 
 function changeTab(event, index) {
   var tabButtons = document.getElementById("tab-buttons").children;
@@ -33,59 +32,49 @@ function changeTab(event, index) {
 
 // Switch between login and signup
 document.addEventListener("DOMContentLoaded", function () {
-  var registerButton = document.getElementById("registerButton");
-  if (registerButton) {
-    registerButton.addEventListener("click", function () {
-      window.location.href = "../php/registerPage.php";
-    });
-  }
-
-  var loginButton = document.getElementById("loginButton");
-  if (loginButton) {
-    loginButton.addEventListener("click", function () {
-      window.location.href = "../php/loginPage.php";
-    });
-  }
+  addNavigationListener("registerButton", "../php/registerPage.php");
+  addNavigationListener("loginButton", "../php/loginPage.php");
 });
+
+// Function to add navigation event listener
+function addNavigationListener(buttonId, targetPage) {
+  const button = document.getElementById(buttonId);
+  if (button) {
+    button.addEventListener("click", function () {
+      window.location.href = targetPage;
+    });
+  }
+}
 
 // Password Toggle
 document.addEventListener("DOMContentLoaded", function () {
-  const passwordInput = document.getElementById("password");
-  const confirmPasswordInput = document.getElementById("confirmPassword");
-  const togglePassword = document.getElementById("togglePassword");
+  togglePasswordVisibility("password", "confirmPassword", "togglePassword");
+  togglePasswordVisibility("passwordInput", null, "togglePasswordVisibility");
+});
 
-  if (togglePassword) {
-    togglePassword.addEventListener("click", function () {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        confirmPasswordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-        confirmPasswordInput.type = "password";
+// Function to toggle password visibility
+function togglePasswordVisibility(
+  passwordId,
+  confirmPasswordId,
+  toggleButtonId
+) {
+  const passwordInput = document.getElementById(passwordId);
+  const confirmPasswordInput = confirmPasswordId
+    ? document.getElementById(confirmPasswordId)
+    : null;
+  const toggleButton = document.getElementById(toggleButtonId);
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", function () {
+      passwordInput.type =
+        passwordInput.type === "password" ? "text" : "password";
+      if (confirmPasswordInput) {
+        confirmPasswordInput.type =
+          confirmPasswordInput.type === "password" ? "text" : "password";
       }
     });
   }
-});
-
-// Password Visibility Toggle
-document.addEventListener("DOMContentLoaded", function () {
-  const passwordInput = document.getElementById("passwordInput");
-  const togglePasswordVisibility = document.getElementById(
-    "togglePasswordVisibility"
-  );
-
-  if (togglePasswordVisibility) {
-    togglePasswordVisibility.style.cursor = "pointer";
-
-    togglePasswordVisibility.addEventListener("click", function () {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-      } else {
-        passwordInput.type = "password";
-      }
-    });
-  }
-});
+}
 
 // Confirm Password
 function validateForm() {
@@ -133,13 +122,13 @@ function validateForm() {
   return false;
 }
 
-document.getElementById("username").addEventListener("input", function () {
+/*document.getElementById("username").addEventListener("input", function () {
   document.getElementById("usernameAvailability").innerText = ""; // Clear username availability message
 });
 
 document.getElementById("email").addEventListener("input", function () {
   document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
-});
+});*/
 
 //Checking Login info
 
@@ -159,7 +148,7 @@ function validateLoginForm() {
         var response = JSON.parse(xmr.responseText);
         if (response.success) {
           // Redirect or show success message
-         //alert("Login Successful");
+          //alert("Login Successful");
           window.location.href = "homePage.php";
         } else {
           // Show the error message from the server
@@ -183,4 +172,225 @@ function validateLoginForm() {
 
   // Prevent form from submitting
   return false;
+}
+
+//One Way Form
+
+function one_way_form() {
+  var origin = document.getElementById("origin").value;
+  var destination = document.getElementById("destination").value;
+  var departDate = document.getElementById("depart_date").value;
+  var passengerCount = document.getElementById("passengers").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./fetchFlights.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "origin=" +
+    origin +
+    "&destination=" +
+    destination +
+    "&departDate=" +
+    departDate +
+    "&passengerCount=" +
+    passengerCount;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var flights = JSON.parse(xhr.responseText);
+      displayFlights(flights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Display One Way Flights
+
+function displayFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document.getElementById("results_content").classList.remove("hidden");
+
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    //document.getElementById("flightArrivalDate").textContent =
+    //flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    // document.getElementById("flightDepartDate").textContent = flight.depart_day;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
+function searchFlight() {
+  // Flight ID search
+  var flightId = document.getElementById("flightId").value;
+  if (flightId !== "") {
+    document.getElementById("searchByflightId").submit();
+  } else {
+    alert("Please enter a flight ID.");
+    return false;
+  }
+}
+
+function searchFlightRoute() {
+  // Route search
+  var boardingFrom = document.getElementById("boardingFrom").value;
+  var destination = document.getElementById("destination").value;
+  if (boardingFrom !== "" && destination !== "") {
+    document.getElementById("searchByRoute").submit();
+  } else {
+    alert("Please enter both boarding from and destination.");
+    return false;
+  }
+}
+
+function flightNumberResults() {
+  var flightNum = document.getElementById("flightId").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./statusFetch.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params = "flightNum=" + flightNum;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      //console.log(xhr.responseText);
+      var flights = JSON.parse(xhr.responseText);
+      displayStatusFlights(flights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+function displayStatusFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document.getElementById("result_fetch_content").classList.remove("hidden");
+
+    document.getElementById("flightArrivalTime").textContent = flight.arrival;
+    document.getElementById("flightArrivalDate").textContent =
+      flight.arrival_day;
+    document.getElementById("flightDepartTime").textContent = flight.depart;
+    document.getElementById("flightDepartDate").textContent = flight.depart_day;
+    document.getElementById("flightDestination").textContent =
+      flight.destination;
+    document.getElementById("flightId").textContent = flight.flight_id;
+    document.getElementById("flightOrigin").textContent = flight.origin;
+    //document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
+function flightRouteResults() {
+  var routeOrigin = document.getElementById("routeOrigin").value;
+  var routeDestination = document.getElementById("routeDestination").value;
+  var departDateRoute = document.getElementById("departDateRoute").value;
+  /*console.log(routeDestination);
+  console.log(routeOrigin);
+  console.log(departDateRoute);*/
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./statusFetch.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  var params =
+    "routeOrigin=" +
+    routeOrigin +
+    "&routeDestination=" +
+    routeDestination +
+    "&departDateRoute=" +
+    departDateRoute;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      //console.log(xhr.responseText);
+      var routeFlights = JSON.parse(xhr.responseText);
+      displayRouteStatusFlights(routeFlights);
+    }
+  };
+
+  xhr.send(params);
+}
+
+function displayRouteStatusFlights(flights) {
+  if (flights.length > 0) {
+    var flight = flights[0];
+    document
+      .getElementById("result_fetch_route_content")
+      .classList.remove("hidden");
+
+    document.getElementById("flightRouteArrivalTime").textContent =
+      flight.arrival;
+    document.getElementById("flightRouteArrivalDate").textContent =
+      flight.arrival_day;
+    document.getElementById("flightRouteDepartTime").textContent =
+      flight.depart;
+    document.getElementById("flightRouteDepartDate").textContent =
+      flight.depart_day;
+    document.getElementById("flightRouteDestination").textContent =
+      flight.destination;
+    document.getElementById("flightRouteId").textContent = flight.flight_id;
+
+    document.getElementById("flightRouteOrigin").textContent = flight.origin;
+    //document.getElementById("flightPrice").textContent = "Rs " + flight.price;
+  }
+}
+
+//Book ticket
+
+function bookTicket(flight_id, passenger_count) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./bookTicket.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  // Assuming user is logged in and user_id is available in session
+  var params = "flight_id=" + flight_id + "&passenger_count=" + passenger_count;
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          alert("Booking successful!");
+        } else {
+          alert("Booking failed. Please try again.");
+        }
+      } else {
+        alert("Error: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.send(params);
+}
+
+//Check login and book
+
+function checkLoginAndBook() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "./check_login.php", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      if (response.isLoggedIn) {
+        bookTicket(
+          document.getElementById("flightId").innerHTML,
+          document.getElementById("passengers").value
+        );
+      } else {
+        alert("You need to log in before booking a ticket.");
+        // You can also redirect the user to the login page here if you have one
+        window.location.href = "loginPage.php";
+      }
+    }
+  };
+
+  xhr.send();
 }

@@ -1,32 +1,36 @@
 <?php
+include("connection.php");
 
-include ("connection.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["flightNum"])) {
+        // Search by flight number
+        $flightNum = $_POST["flightNum"];
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        $sql = "SELECT * FROM flights WHERE flight_id='$flightNum'";
+    } else if (isset($_POST["routeOrigin"]) && isset($_POST["routeDestination"]) && isset($_POST["departDateRoute"])) {
+        // Search by origin, destination, and departure date
+        $routeOrigin = $_POST["routeOrigin"];
+        $routeDestination = $_POST["routeDestination"];
+        $departDateRoute = $_POST["departDateRoute"];
 
-// Handle form data (you'll need to adapt this based on your actual form fields)
-$flightNumber = $_POST['flightNumber'];
-$departDate = $_POST['departDate'];
-
-// Example query to get flight data based on form input
-$sql = "SELECT * FROM flights WHERE flight_number='$flightNumber' AND depart_date='$departDate'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<div class='flight-result'>";
-        echo "Flight Number: " . $row['flight_number'] . "<br>";
-        echo "Departure Time: " . $row['departure_time'] . "<br>";
-        echo "Arrival Time: " . $row['arrival_time'] . "<br>";
-        echo "Price: " . $row['price'] . "<br>";
-        echo "</div>";
+        $sql = "SELECT * FROM flights WHERE origin='$routeOrigin' AND destination='$routeDestination' AND depart_day='$departDateRoute'";
+    } else {
+        echo json_encode(["error" => "Invalid request"]);
+        exit();
     }
-} else {
-    echo "No flights found for the selected criteria.";
-}
 
-$conn->close();
-?>
+    $result = $con->query($sql);
+
+    if ($result === false) {
+        echo json_encode(["error" => "Database query failed: " . $con->error]);
+        exit();
+    }
+
+    $flights = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $flights[] = $row;
+    }
+
+    echo json_encode($flights);
+}
