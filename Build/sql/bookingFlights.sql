@@ -10,15 +10,15 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
 --contactUs table--
-CREATE TABLE `users` (
- `id` bigint(20) NOT NULL AUTO_INCREMENT,
- `UserId` bigint(20) NOT NULL,
- `username` varchar(100) NOT NULL,
- `email` varchar(100) NOT NULL,
- `passwordhash` varchar(255) NOT NULL,
- `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `firstName` varchar(20) NOT NULL,
+  `lastName` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phoneNumber` int(20) NOT NULL,
+  `message` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --Flights table with flights data--
 CREATE TABLE `flights` (
@@ -59,3 +59,12 @@ VALUES
 ('FL018', 'Chennai', 'Mumbai', '2023-10-17', '16:00:00', '2023-10-17', '22:35:00', '3h35m', 1850, 180),
 ('FL019', 'Kolkata', 'Hyderabad', '2023-10-18', '11:30:00', '2023-10-18', '14:50:00', '2h20m', 2150, 70),
 ('FL020', 'Bengaluru', 'Chennai', '2023-10-19', '20:00:00', '2023-10-19', '23:20:00', '2h20m', 2400, 130);
+
+
+--Reservations Table---
+
+CREATE TABLE `reservations` (
+  `user_id` varchar(50) NOT NULL,
+  `flight_id` varchar(50) NOT NULL,
+  `passenger_count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
