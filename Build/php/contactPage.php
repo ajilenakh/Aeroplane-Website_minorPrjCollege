@@ -100,7 +100,7 @@ include_once("functions.php");
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact us</h2>
       </div>
-      <form action="./contactProcess.php" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20" onsubmit="return validateContactForm()">
+      <form action="../contactProcess.php" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20" onsubmit="return validateContactForm()">
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">First name</label>
