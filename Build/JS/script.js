@@ -103,7 +103,7 @@ function validateForm() {
         var response = JSON.parse(xhr.responseText);
         if (response.success) {
           // Registration was successful, you can optionally redirect the user here
-          window.location.href = "homePage.php"; // Redireecting to homePage
+          window.location.href = "/Aeroplane-Website/index.php"; // Redireecting to homePage
           alert("Registraion Successfull");
         } else {
           passwordError.innerText = response.message; // Display registration error
@@ -149,7 +149,7 @@ function validateLoginForm() {
         if (response.success) {
           // Redirect or show success message
           //alert("Login Successful");
-          window.location.href = "homePage.php";
+          window.location.href = "/Aeroplane-Website/index.php";
         } else {
           // Show the error message from the server
           errorContainer.innerText = response.message;
