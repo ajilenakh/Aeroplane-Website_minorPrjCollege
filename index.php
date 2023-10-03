@@ -28,7 +28,7 @@ include_once("Build/php/functions.php");
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex items-center lg:flex-1">
-          <a href="../../index.php" class="flex items-center">
+          <a href="#" class="flex items-center">
             <img href="index.php" class="h-8 w-auto" src="Build/images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
@@ -42,13 +42,25 @@ include_once("Build/php/functions.php");
           </button>
         </div>
         <div class="hidden lg:flex lg:flex-1 justify-center lg:gap-x-12" id="openMenuItems">
-          <a href="../../index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
           <a href="Build/php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
           <a href="Build/php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
           <a href="Build/php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
         <?php
-        show_login();
+        if (isset($_SESSION['username'])) {
+          echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+          echo '<span class="text-sm font-semibold leading-6 text-gray-900 hover:underline mx-5">' . $_SESSION['username'] . '</span>';
+          echo '<form action="./Build/php/logout.php" method="post">';
+          echo '<input type="submit" value="Logout" class="hover:underline">';
+          echo '</form>';
+          echo '</div>';
+        } else {
+          // If the user is not logged in, show the login button
+          echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
+          echo '<a href="./Build/php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true">&rarr;</span></a>';
+          echo '</div>';
+        }
         ?>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
@@ -67,7 +79,7 @@ include_once("Build/php/functions.php");
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../../index.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
                 <a href="Build/php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
                 <a href="Build/php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
                 <a href="Build/php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
@@ -187,7 +199,7 @@ include_once("Build/php/functions.php");
   <footer class=" rounded-lg m-4">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
       <div class="sm:flex sm:items-center sm:justify-between">
-        <a class="flex items-center mb-4 sm:mb-0">
+        <a href="#" class="flex items-center mb-4 sm:mb-0">
           <img src="Build/images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
         </a>
