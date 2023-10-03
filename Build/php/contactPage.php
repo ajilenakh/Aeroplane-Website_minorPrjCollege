@@ -178,7 +178,7 @@ include_once("functions.php");
           if (validateContactForm()) {
             // Form submission is successful
             alert('Form submitted successfully!'); // Display an alert
-            window.location.href = 'index.php';
+            window.location.href = '../../index.php';
           }
         });
       });
