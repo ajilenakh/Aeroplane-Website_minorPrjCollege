@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         $_SESSION["email"] = $email; // Store user's email in the session
                         echo json_encode(array("success" => true, "message" => "Registration successful!"));
-                        //header("location: homePage.php");
+                        //header("location: index.php");
                     } else {
                         echo json_encode(array("success" => false, "message" => "Error: " . mysqli_error($con)));
                     }
@@ -59,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(array("success" => false, "message" => "Username cannot be a number."));
     }
 }
-?>

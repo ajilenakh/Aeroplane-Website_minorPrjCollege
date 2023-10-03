@@ -20,11 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($con, $query)) {
         echo json_encode(array("success" => true, "message" => "Contact Details submitted successfully"));
-        //header("location: homePage.php");
+        //header("location: index.php");
     } else {
         echo "Error: " . mysqli_error($con);
     }
 
     mysqli_close($con);
 }
-?>

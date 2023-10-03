@@ -14,10 +14,10 @@ include_once("functions.php");
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fly - Home</title>
-  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"><!---Favicon--->
+  <link rel="shortcut icon" href="Build/images/favicon.ico" type="image/x-icon"><!---Favicon--->
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="Build/css/style.css">
 </head>
 
 <body>
@@ -28,8 +28,8 @@ include_once("functions.php");
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex items-center lg:flex-1">
-          <a href="../php/homePage.php" class="flex items-center">
-            <img class="h-8 w-auto" src="../images/navbar-photo.png" alt="company-logo">
+          <a class="flex items-center">
+            <img class="h-8 w-auto" src="Build/images/navbar-photo.png" alt="company-logo">
             <span class="self-center text-2xl pl-4 font-semibold whitespace-nowrap dark:text-black-400">Fly</span>
           </a>
         </div>
@@ -42,10 +42,10 @@ include_once("functions.php");
           </button>
         </div>
         <div class="hidden lg:flex lg:flex-1 justify-center lg:gap-x-12" id="openMenuItems">
-          <a href="../php/homePage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="../php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="../php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="../php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
+          <a href="Build/php/index.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
+          <a href="Build/php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
+          <a href="Build/php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
+          <a href="Build/php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
         </div>
         <?php
         show_login();
@@ -67,23 +67,23 @@ include_once("functions.php");
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a href="../php/homePage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
-                <a href="../php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
-                <a href="../php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
-                <a href="../php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
+                <a href="Build/php/index.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Home</a>
+                <a href="Build/php/bookingPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Booking</a>
+                <a href="Build/php/statusPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Status</a>
+                <a href="Build/php/contactPage.php" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">Contact us</a>
               </div>
               <?php
               if (isset($_SESSION['username'])) {
                 echo '<div class="lg:flex lg:flex-1 lg:justify-end">';
                 echo '<span class="text-sm font-semibold leading-6 text-gray-900 hover:underline">' . $_SESSION['username'] . '</span>';
-                echo '<form action="../php/logout.php" method="post">';
+                echo '<form action="Build/php/logout.php" method="post">';
                 echo '<input type="submit" value="Logout" class="hover:underline mt-5">';
                 echo '</form>';
                 echo '</div>';
               } else {
                 // If the user is not logged in, show the login button
                 echo '<div class="lg:flex lg:flex-1 lg:justify-end">';
-                echo '<a href="../php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true"></span></a>';
+                echo '<a href="Build/php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true"></span></a>';
                 echo '</div>';
               }
               ?>
@@ -104,7 +104,7 @@ include_once("functions.php");
           <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Fly high with convenient ticket booking</h1>
           <p class="mt-6 text-lg leading-8 text-gray-600">Experience hassle-free airplane ticket booking in Mumbai. Choose from a range of options and travel with ease.</p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="../php/bookingPage.php#booking-form" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</a>
+            <a href="Build/php/bookingPage.php#booking-form" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</a>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ include_once("functions.php");
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">About us</h1>
       <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fly is a leading airplane ticket booking platform based in Mumbai, Maharashtra, India. Our mission is to make air travel accessible and affordable for everyone. With a user-friendly interface and a vast selection of airlines and routes, we provide a seamless booking experience for our customers.</p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-        <a href="../php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-[#676E78] rounded-lg border border-[#676E78] hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+        <a href="Build/php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-[#676E78] rounded-lg border border-[#676E78] hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
           Contact us
         </a>
       </div>
@@ -139,21 +139,21 @@ include_once("functions.php");
       <div class="flex justify-center items-center space-x-8">
         <!-- Service 1 -->
         <div class="max-w-sm">
-          <img src="../images/our-services-photo-1.jpg" alt="Service 1" class="w-80 h-80 mx-auto mb-4 rounded-full">
+          <img src="Build/images/our-services-photo-1.jpg" alt="Service 1" class="w-80 h-80 mx-auto mb-4 rounded-full">
           <h3 class="text-2xl font-bold mb-2 text-center">Flexible Booking Options</h3>
           <p class="text-gray-700 text-center">Choose from a variety of booking options that fit your travel needs.</p>
         </div>
 
         <!-- Service 2 -->
         <div class="max-w-sm">
-          <img src="../images/our-services-photo-2.jpg" alt="Service 2" class="w-80 h-80 mx-auto mb-4 rounded-full">
+          <img src="Build/images/our-services-photo-2.jpg" alt="Service 2" class="w-80 h-80 mx-auto mb-4 rounded-full">
           <h3 class="text-2xl font-bold mb-2 text-center">24/7 Customer Support</h3>
           <p class="text-gray-700 text-center">Our dedicated team of experts are available round-the-clock to assist you.</p>
         </div>
 
         <!-- Service 3 -->
         <div class="max-w-sm">
-          <img src="../images/our-services-photo-3.jpg" alt="Service 3" class="w-80 h-80  mx-auto mb-4 rounded-full">
+          <img src="Build/images/our-services-photo-3.jpg" alt="Service 3" class="w-80 h-80  mx-auto mb-4 rounded-full">
           <h3 class="text-2xl font-bold mb-2 text-center">Easy Cancellation Policy</h3>
           <p class="text-gray-700 text-center">Cancel or modify your booking hassle-free with our easy cancellation policy.</p>
         </div>
@@ -187,8 +187,8 @@ include_once("functions.php");
   <footer class=" rounded-lg m-4">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
       <div class="sm:flex sm:items-center sm:justify-between">
-        <a href="../php/homePage.php" class="flex items-center mb-4 sm:mb-0">
-          <img src="../images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
+        <a class="flex items-center mb-4 sm:mb-0">
+          <img src="Build/images/navbar-photo.png" class="h-8 mr-3" alt="company-logo" />
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Fly</span>
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-white-400">
@@ -196,18 +196,18 @@ include_once("functions.php");
             <a href="#about-us-content" class="mr-4 hover:underline md:mr-6 ">About</a>
           </li>
           <li>
-            <a href="../php/contactPage.php" class="hover:underline">Contact</a>
+            <a href="Build/php/contactPage.php" class="hover:underline">Contact</a>
           </li>
         </ul>
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a href="../php/homePage.php" class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a class="hover:underline">Fly™</a>. All Rights Reserved.</span>
     </div>
   </footer>
 
 
   <!------------Javascript---------->
-  <script src="../JS/script.js"></script>
+  <script src="Build/JS/script.js"></script>
 
 
 </body>
