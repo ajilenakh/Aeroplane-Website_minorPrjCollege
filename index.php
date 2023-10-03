@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include("connection.php");
-include_once("functions.php");
+include("Build/php/connection.php");
+include_once("Build/php/functions.php");
 
 //$user_data = check_login($con);
 
