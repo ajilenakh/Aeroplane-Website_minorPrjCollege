@@ -7,6 +7,7 @@ include_once("functions.php");
 $user_data = check_login($con);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +15,9 @@ $user_data = check_login($con);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fly - Status</title>
-  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"><!---Favicon--->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/tailwind.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 
 <body>

@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
-
-
-.bg-about-us-image
-{
-    background-image: url('../images/about-us-image.jpg'); 
-    background-size: cover;
+.bg-about-us-image {
+  background-image: url("../images/about-us-image.jpg");
+  background-size: cover;
 }
 
-.bg-flight-booking-image
-{
-    background-image: url('../images/booking.jpg');
-    background-size: cover;
+.bg-flight-booking-image {
+  background-image: url("../images/booking.jpg");
+  background-size: cover;
 }

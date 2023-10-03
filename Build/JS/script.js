@@ -120,14 +120,6 @@ function validateForm() {
   return false;
 }
 
-/*document.getElementById("username").addEventListener("input", function () {
-  document.getElementById("usernameAvailability").innerText = ""; // Clear username availability message
-});
-
-document.getElementById("email").addEventListener("input", function () {
-  document.getElementById("emailAvailability").innerText = ""; // Clear email availability message
-});*/
-
 //Checking Login info
 
 function validateLoginForm() {
@@ -145,8 +137,6 @@ function validateLoginForm() {
       if (xmr.status === 200) {
         var response = JSON.parse(xmr.responseText);
         if (response.success) {
-          // Redirect or show success message
-          //alert("Login Successful");
           window.location.href = "../../index.php";
         } else {
           // Show the error message from the server
@@ -289,9 +279,6 @@ function flightRouteResults() {
   var routeOrigin = document.getElementById("routeOrigin").value;
   var routeDestination = document.getElementById("routeDestination").value;
   var departDateRoute = document.getElementById("departDateRoute").value;
-  /*console.log(routeDestination);
-  console.log(routeOrigin);
-  console.log(departDateRoute);*/
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "./statusFetch.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -306,7 +293,6 @@ function flightRouteResults() {
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
-      //console.log(xhr.responseText);
       var routeFlights = JSON.parse(xhr.responseText);
       displayRouteStatusFlights(routeFlights);
     }
@@ -335,7 +321,6 @@ function displayRouteStatusFlights(flights) {
     document.getElementById("flightRouteId").textContent = flight.flight_id;
 
     document.getElementById("flightRouteOrigin").textContent = flight.origin;
-    //document.getElementById("flightPrice").textContent = "Rs " + flight.price;
   }
 }
 

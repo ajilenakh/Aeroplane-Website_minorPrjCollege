@@ -14,10 +14,10 @@ include_once("Build/php/functions.php");
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fly - Home</title>
-  <link rel="shortcut icon" href="Build/images/favicon.ico" type="image/x-icon"><!---Favicon--->
-
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="Build/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="Build/css/tailwind.css">
   <link rel="stylesheet" href="Build/css/style.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 </head>
 
 <body>
