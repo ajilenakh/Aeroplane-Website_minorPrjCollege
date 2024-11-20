@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # PHP + Apache service
+  web:
+    build:
+      context: .
+    container_name: php-apache
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"  # Expose Apache on port 80
+    depends_on:
+      - aeroplane_website
+
+  # MySQL service
+  aeroplane_website:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "aeroplane_website"
+    volumes:
+      - aeroplane_website_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80 
+    environment:
+      - PMA_ARBITRARY=1
+
+# Volumes definition
+volumes:
+  aeroplane_website_data:
+  phpmyadmin_data:   

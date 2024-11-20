@@ -1,8 +1,8 @@
 <?php
 
-$dbhost = "localhost";
+$dbhost = "aeroplane_website";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "password";
 $dbname = "aeroplane_website";
 
 if(!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname))
