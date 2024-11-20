@@ -16,8 +16,7 @@ include_once("functions.php");
   <title>Fly - Contact us</title>
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"><!---Favicon--->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/tailwind.css">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>

@@ -16,8 +16,7 @@ include_once("functions.php");
   <title>Fly - Booking</title>
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/tailwind.css">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
