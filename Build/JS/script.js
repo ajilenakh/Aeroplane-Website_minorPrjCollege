@@ -326,13 +326,37 @@ function displayRouteStatusFlights(flights) {
 
 //Book ticket
 
+function checkLoginAndBook() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "./check_login.php", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      if (response.isLoggedIn) {
+        // Now that we have the user_id from the backend, send the ticket booking request
+        var flightId = document.getElementById("flightId").innerText;
+        var passengerCount = document.getElementById("passengers").value;
+
+        bookTicket(flightId, passengerCount);
+      } else {
+        alert("You need to log in before booking a ticket.");
+        window.location.href = "loginPage.php";  // Redirect to login page if not logged in
+      }
+    }
+  };
+
+  xhr.send();
+}
+
 function bookTicket(flight_id, passenger_count) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "./bookTicket.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  // Assuming user is logged in and user_id is available in session
-  var params = "flight_id=" + flight_id + "&passenger_count=" + passenger_count;
+  // Sending the flight_id and passenger_count to the backend for booking
+  var params = "flight_id=" + encodeURIComponent(flight_id) + "&passenger_count=" + encodeURIComponent(passenger_count);
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) {
@@ -350,30 +374,4 @@ function bookTicket(flight_id, passenger_count) {
   };
 
   xhr.send(params);
-}
-
-//Check login and book
-
-function checkLoginAndBook() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "./check_login.php", true);
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var response = JSON.parse(xhr.responseText);
-
-      if (response.isLoggedIn) {
-        bookTicket(
-          document.getElementById("flightId").innerHTML,
-          document.getElementById("passengers").value
-        );
-      } else {
-        alert("You need to log in before booking a ticket.");
-        // You can also redirect the user to the login page here if you have one
-        window.location.href = "loginPage.php";
-      }
-    }
-  };
-
-  xhr.send();
 }

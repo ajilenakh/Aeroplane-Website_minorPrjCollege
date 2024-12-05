@@ -21,20 +21,19 @@ CREATE TABLE `contact` (
 
 
 --Flights table with flights data--
-CREATE TABLE `flights` (
-  `flight_num` int(10) NOT NULL AUTO_INCREMENT,
-  `flight_id` varchar(11) DEFAULT NULL,
-  `origin` varchar(50) DEFAULT NULL,
-  `destination` varchar(50) DEFAULT NULL,
-  `depart_day` date DEFAULT NULL,
-  `depart` time DEFAULT NULL,
-  `arrival_day` date DEFAULT NULL,
-  `arrival` time DEFAULT NULL,
-  `duration` varchar(50) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `seats_available` int(11) DEFAULT NULL,
-  PRIMARY KEY (`flight_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE flights (
+  'flight_id' VARCHAR(50) NOT NULL,
+  'origin' VARCHAR(50) NOT NULL,
+  'destination' VARCHAR(50) NOT NULL,
+  'depart_day' DATE NOT NULL,
+  'depart' TIME NOT NULL,
+  'arrival_day' DATE NOT NULL,
+  'arrival' TIME NOT NULL,
+  'duration' VARCHAR(50) NOT NULL,
+  'price' FLOAT NOT NULL,
+  'seats_available' INT(11) NOT NULL,
+  PRIMARY KEY (flight_id)
+) ENGINE='InnoDB' DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `flights` 
 (`flight_id`, `origin`, `destination`, `depart_day`, `depart`, `arrival_day`, `arrival`, `duration`, `price`, `seats_available`)
@@ -61,10 +60,13 @@ VALUES
 ('FL020', 'Bengaluru', 'Chennai', '2023-10-19', '20:00:00', '2023-10-19', '23:20:00', '2h20m', 2400, 130);
 
 
---Reservations Table---
-
-CREATE TABLE `reservations` (
-  `user_id` varchar(50) NOT NULL,
-  `flight_id` varchar(50) NOT NULL,
-  `passenger_count` int(11) NOT NULL
+CREATE TABLE reservations (
+  'reservation_id' INT(11) NOT NULL AUTO_INCREMENT,
+  'user_id' BIGINT(20) NOT NULL,
+  'flight_id' VARCHAR(50) NOT NULL,
+  'passenger_count' INT(11) NOT NULL,
+  'booking_date' TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (reservation_id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (flight_id) REFERENCES flights(flight_id) ON DELETE CASCADE 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
