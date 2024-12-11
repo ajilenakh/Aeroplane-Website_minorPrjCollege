@@ -41,15 +41,15 @@ include_once("Build/php/functions.php");
           </button>
         </div>
         <div class="hidden lg:flex lg:flex-1 justify-center lg:gap-x-12" id="openMenuItems">
-          <a href="#" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Home</a>
-          <a href="Build/php/bookingPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Booking</a>
-          <a href="Build/php/statusPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Status</a>
-          <a href="Build/php/contactPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Contact us</a>
-        </div>
+  <a href="#" class="text-sm font-semibold leading-6 text-white hover:underline">Home</a>
+  <a href="Build/php/bookingPage.php" class="text-sm font-semibold leading-6 text-white hover:underline">Booking</a>
+  <a href="Build/php/statusPage.php" class="text-sm font-semibold leading-6 text-white hover:underline">Status</a>
+  <a href="Build/php/contactPage.php" class="text-sm font-semibold leading-6 text-white hover:underline">Contact us</a>
+</div>
         <?php
         if (isset($_SESSION['username'])) {
           echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-          echo '<span class="text-sm font-semibold leading-6 text-gray-900 hover:underline mx-5">' . $_SESSION['username'] . '</span>';
+          echo '<span class="text-sm font-semibold leading-6 text-white hover:underline mx-5">' . $_SESSION['username'] . '</span>';
           echo '<form action="./Build/php/logout.php" method="post">';
           echo '<input type="submit" value="Logout" class="hover:underline">';
           echo '</form>';
@@ -57,7 +57,7 @@ include_once("Build/php/functions.php");
         } else {
           // If the user is not logged in, show the login button
           echo '<div class="hidden lg:flex lg:flex-1 lg:justify-end">';
-          echo '<a href="./Build/php/loginPage.php" class="text-sm font-semibold leading-6 text-gray-900 hover:underline">Log in<span aria-hidden="true">&rarr;</span></a>';
+          echo '<a href="./Build/php/loginPage.php" class="text-sm font-semibold leading-6 text-white hover:underline">Log in<span aria-hidden="true">&rarr;</span></a>';
           echo '</div>';
         }
         ?>
@@ -106,24 +106,19 @@ include_once("Build/php/functions.php");
 
 
     <!-----Hero Section---->
-    <div class="relative isolate px-6 pt-14 lg:px-8" id="hero-section">
-      <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-      </div>
-      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div class="text-center">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Fly high with convenient ticket booking</h1>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Experience hassle-free airplane ticket booking in Mumbai. Choose from a range of options and travel with ease.</p>
-          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="Build/php/bookingPage.php#booking-form" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Book Now</a>
-          </div>
-        </div>
-      </div>
-      <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-b from-sky-400 to-sky-200 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-      </div>
+    <div class="w-full min-h-screen flex items-center justify-center relative bg-cover bg-center" style="background-image: url('Build/images/dbmmm.jpg');">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div> <!-- Optional overlay -->
+  <div class="text-center relative z-10">
+    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Fly high with AIR DBM</h1>
+    <p class="mt-6 text-lg leading-8 text-gray-200">Experience hassle-free airplane ticket booking.</p>
+    <br><br>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+        <a href="Build/php/bookingPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-[#FFFFFF] rounded-lg border border-[#FFFFFF] hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+          Book Now
+        </a>
     </div>
   </div>
+</div>
 
 
   <!---About us---->
@@ -131,7 +126,7 @@ include_once("Build/php/functions.php");
   <section class="bg-center bg-no-repeat bg-about-us-image  bg-gray-700 bg-blend-multiply " id="about-us-content">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">About us</h1>
-      <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Fly is a leading airplane ticket booking platform based in Mumbai, Maharashtra, India. Our mission is to make air travel accessible and affordable for everyone. With a user-friendly interface and a vast selection of airlines and routes, we provide a seamless booking experience for our customers.</p>
+      <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">AIR DBM is a leading airplane ticket booking platform based in WestBengal, Chittranjan India. Our mission is to make air travel accessible and affordable for everyone. With a user-friendly interface and a vast selection of airlines and routes, we provide a seamless booking experience for our customers.</p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
         <a href="Build/php/contactPage.php" class="inline-flex contact-button justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-[#676E78] rounded-lg border border-[#676E78] hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
           Contact us
@@ -181,7 +176,7 @@ include_once("Build/php/functions.php");
           <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor" />
         </svg>
         <blockquote>
-          <p class="text-2xl font-medium text-gray-900 dark:text-black">"I had a fantastic experience booking my airplane tickets with Fly. Their service was efficient and their staff was friendly and helpful. Thank you for making my travel plans stress-free!"</p>
+          <p class="text-2xl font-medium text-gray-900 dark:text-black">"I had a fantastic experience booking my airplane tickets with AIR DBM. Their service was efficient and their staff was friendly and helpful. Thank you for making my travel plans stress-free!"</p>
         </blockquote>
         <figcaption class="flex items-center justify-center mt-6 space-x-3">
           <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
@@ -212,7 +207,7 @@ include_once("Build/php/functions.php");
         </ul>
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2023 <a class="hover:underline">Fly™</a>. All Rights Reserved.</span>
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-white-400">© 2024 <a class="hover:underline">AIR DBM™</a>. All Rights Reserved.</span>
     </div>
   </footer>
 
